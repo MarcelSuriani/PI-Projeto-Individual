@@ -1,0 +1,65 @@
+/* fonte personalizada */
+@font-face {
+  font-family: Tommy-B;
+  src: url(font/Tommy/Tommy-bold.otf) format('opentype');
+  font-style: bold;
+}
+
+@font-face {
+  font-family: CrazyKiller;
+  src: url(font/Crazy-Killer/Crazy-Killer.TTF) format('truetype');
+  text-decoration: none;
+
+}
+/* reset na pagina */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(0, 0, 0);
+  color: rgb(137, 122, 95);
+font-family: "TOmmy-B";
+}
+
+header{
+    width: 100%;
+    display: flex;
+    padding: 2%;
+    justify-content: space-between;
+    background-color: black;
+    height: 70px;
+    align-items: center; /* alinhar na vertical*/
+    position: fixed; /* posição fixa*/
+    border-bottom: 1px solid rgb(137, 122, 95);
+    
+    ul{
+        display: flex;
+        gap: 25px;
+        list-style-type: none;
+        background-color: rgb(255, 255, 255, 0.1);
+        padding: 16px 20px;
+        border-radius: 12px;
+        backdrop-filter: blur(20px);
+    }
+}
+
+.logo{
+    height: 69px;
+    filter: sepia();
+}
+
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.secao1{
+    background-image: url("assets/img/bg/bg.jpg");
+    background-size: cover;
+    background-position: top;
+    height: calc(100dvh - 70px);
+}
