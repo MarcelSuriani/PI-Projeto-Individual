@@ -33,7 +33,8 @@ header{
     height: 70px;
     align-items: center; /* alinhar na vertical*/
     position: fixed; /* posição fixa*/
-    border-bottom: 1px solid rgb(137, 122, 95);
+    border-bottom: 1px solid rgba(114, 114, 114, 0.404);
+    z-index: 50; /*Posição no eixo Z*/
     
     ul{
         display: flex;
@@ -57,9 +58,30 @@ section{
     flex-direction: column;
 }
 
-.secao1{
-    background-image: url("assets/img/bg/bg.jpg");
-    background-size: cover;
-    background-position: top;
-    height: calc(100dvh - 70px);
+.hero-site{
+background-image: url(/assets/img/bg/bg.jpg);
+background-repeat: no-repeat;
+background-size: cover; /*Ocupa toda a capa*/
+background-position: top; /*Caso corte, mantem alinhado pelo topo*/
+height: calc(90dvh - 70px); /*Altura menos tamanho da navbar*/
+
+/* Aplica o fade de todas as direções para dentro */
+-webkit-mask-image: radial-gradient(circle, black 50%, transparent 100%);
+mask-image: radial-gradient(circle, black 50%, transparent 100%);
+  /* Ajustar a posição e tamanho da máscara */
+-webkit-mask-size: 100% 100%;
+mask-size: 30% 100%;
+}
+.logo-hero{
+  height: 20vh;
+}
+
+
+
+.container02{
+  height: 100dvh;
+}
+
+.container03{
+  height: 100dvh;
 }
