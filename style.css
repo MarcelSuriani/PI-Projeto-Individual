@@ -11,6 +11,21 @@
   text-decoration: none;
 
 }
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.cinzel {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* reset na pagina */
 * {
   margin: 0;
@@ -20,20 +35,21 @@
 
 body{
   background-color: rgb(0, 0, 0);
-  color: rgb(137, 122, 95);
-font-family: "TOmmy-B";
+  color: rgb(255, 255, 255);
+  font-family: "TOmmy-B";
 }
 
+/*Header*/
 header{
     width: 100%;
     display: flex;
     padding: 2%;
-    justify-content: space-between;
-    background-color: black;
+    justify-content: space-between; /*Espaçamento*/
+    background-color: rgb(20, 20, 20);
     height: 70px;
     align-items: center; /* alinhar na vertical*/
-    position: fixed; /* posição fixa*/
-    border-bottom: 1px solid rgba(114, 114, 114, 0.404);
+    position: top; /* se deixar fixo o bg do hero fica atras*/
+    border-bottom: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de baixo */
     z-index: 50; /*Posição no eixo Z*/
     
     ul{
@@ -49,39 +65,70 @@ header{
 
 .logo{
     height: 69px;
-    filter: sepia();
+    filter: saturate(0);
+    filter: brightness(100);
 }
 
-section{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.hero{
+  width: 100dvw; /*Largura da seção*/
+  display: flex;
+  flex-direction: row; /* Eixo principal*/
+  justify-content: center; /* distribuição eixo principal*/
+  align-items: end;
+  
+  background: url(/assets/img/bg/bg-faded.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; /*Ocupa toda a capa*/
+  background-position: top; /*Caso corte, mantem alinhado pelo topo*/
+  height: 1080px; /*Altura*/
+
+  /* Aplica o fade de todas as direções para dentro */
+  mask-image: radial-gradient(circle, rgb(0, 0, 0) 75%/* avanço do faded dentro da img*/, transparent 100%);
+    /* Ajustar a posição e tamanho da máscara */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 5% /*quantidade de vzs que repete*/100%;
+
+ .logo-hero{
+    height: 350px;
+    filter: invert();
+    z-index: 5;
+  } 
 }
 
-.hero-site{
-background-image: url(/assets/img/bg/bg.jpg);
-background-repeat: no-repeat;
-background-size: cover; /*Ocupa toda a capa*/
-background-position: top; /*Caso corte, mantem alinhado pelo topo*/
-height: calc(90dvh - 70px); /*Altura menos tamanho da navbar*/
+.container-2{
+  
 
-/* Aplica o fade de todas as direções para dentro */
--webkit-mask-image: radial-gradient(circle, black 50%, transparent 100%);
-mask-image: radial-gradient(circle, black 50%, transparent 100%);
-  /* Ajustar a posição e tamanho da máscara */
--webkit-mask-size: 100% 100%;
-mask-size: 30% 100%;
-}
-.logo-hero{
-  height: 20vh;
-}
+  .container-2-texto{
+    font-family: "IBM Plex Mono";
+    text-align: center;
+    padding: 0% 15%;
+    font-size: 14px;
+  }
 
-
-
-.container02{
-  height: 100dvh;
+  .container-2-titulo{
+    font-family: "Cinzel";
+    text-align: center;
+    padding: 0% 10%;
+    font-size: 50px;
+  }
 }
 
-.container03{
-  height: 100dvh;
+.video-passiva{
+  height: 300px;
+}
+
+.video-Q{
+  height: 300px;
+}
+
+.video-W{
+  height: 300px;
+}
+
+.video-E{
+  height: 300px;
+}
+
+.video-R{
+  height: 300px;
 }
