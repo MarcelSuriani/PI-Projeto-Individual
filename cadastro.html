@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    Nome:
+    <input type="text" id="iptNomeCompleto" placeholder="Nome completo"> <br>
+    
+    Digite seu email:
+    <input type="text" id="iptEmail" placeholder="seu@email.com"> <br>
+
+    Nome de Usuario:
+    <input type="text" id="iptNomeDeUsuario" placeholder="Nome de usuário"> <br>
+    
+    Senha:
+    <input type="password" id="iptSenha" placeholder="Senha"> <br>
+    
+    Confirme a senha:
+    <input type="password" id="iptConfirmarSenha" placeholder="Confirme a senha"> <br>    
+
+    Telefone:
+    <input type="text" id="iptTelefone" placeholder="Número de celular"> <br>
+        
+    <button onclick="cadastrar()">Cadastrar</button> <br>
+    <a href="login.html">Já tenho uma conta</a>
+
+    <div id="divMensagem"></div>
+    
+</body>
+</html>
+
+<script>
+    let caracteresEspeciais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+','[', ']', '{', '}', ';', ':', "'", '"', '\\', '|', ',', '.', '<', '>', '/', '?', '`', '~'];
+
+    function cadastrar() {
+        let nome = iptNomeCompleto.value;
+        let email = iptEmail.value;
+        let username = iptNomeDeUsuario.value
+        let senha = iptSenha.value;
+        let confirmarSenha = iptConfirmarSenha.value;
+        let telefone = iptTelefone.value;
+
+        let incluiCaracterEspecial = false;
+        let incluiArroba = email.includes('@');
+        let incluiDotCom = email.endsWith('.com');
+
+
+        divMensagem.innerHTML = "";
+
+        for (let i = 0; i < caracteresEspeciais.length-1; i++){
+            if (senha.includes(caracteresEspeciais[i])) {
+                incluiCaracterEspecial = true;
+                break;
+            }
+        }
+
+        if (
+            nome == "" || email == "" || username == "" || senha == "" ||
+            confirmarSenha == "" || telefone == "") {
+            divMensagem.innerHTML = "Preencha todos os campos.";
+        } else if (incluiArroba == false || incluiDotCom == false) {
+            divMensagem.innerHTML = "Email inválido!";
+        } else if (!(senha.length>7)) {
+            divMensagem.innerHTML = "A senha deve conter pelo menos 8 caracteres!";
+        } else if (!incluiCaracterEspecial) {
+            divMensagem.innerHTML += `A senha precisa ter caractere especial<br> `;
+        } else if (!(senha == confirmarSenha)) {
+            divMensagem.innerHTML = "As senhas não coincidem!";
+        } else {
+            divMensagem.innerHTML = "Conta criada com sucesso!";
+        }
+    }
+</script>
