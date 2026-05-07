@@ -44,13 +44,13 @@ header{
     width: 100%;
     display: flex;
     padding: 2%;
-    justify-content: space-between; /*Espaçamento*/
+    justify-content: space-between; /*tipo de espaçamento*/
     background-color: rgb(20, 20, 20);
     height: 70px;
-    align-items: center; /* alinhar na vertical*/
+    align-items: center; /* alinhar itens entre eles no eixo vertical*/
     position: top; /* se deixar fixo o bg do hero fica atras*/
     border-bottom: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de baixo */
-    z-index: 50; /*Posição no eixo Z*/
+    z-index: 50;
     
     ul{
         display: flex;
@@ -63,72 +63,101 @@ header{
     }
 }
 
-.logo{
-    height: 69px;
+.logoNav{
+    height: 65px;
     filter: saturate(0);
     filter: brightness(100);
 }
 
-.hero{
-  width: 100dvw; /*Largura da seção*/
+.container-1{
+  width: 100%;
+  height: calc(100dvh - 146px);
+  background-color: rgba(0, 0, 0, 0.199);
   display: flex;
-  flex-direction: row; /* Eixo principal*/
-  justify-content: center; /* distribuição eixo principal*/
-  align-items: end;
+
+    .hero{
+      width: 70%;
+      display: flex;
+      justify-content: center; /*HOrizontal*/
+      align-items: center; /*Vertical*/
+      background-color: rgb(0, 0, 0);
+      position: relative;
+    }
+
+      .container-1-botao{
+        position: absolute; /*pega a referencia a partir do relative do elemento pai*/
+        bottom: 50px;
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        z-index: 2;
+        margin-bottom: 2%;
+}
+      .logo {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*HOrizontal*/
+    align-items: center; /*Vertical*/
+    }
+    
+      .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        position: relative;
+        z-index: 1;
   
-  background: url(/assets/img/bg/bg-faded.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; /*Ocupa toda a capa*/
-  background-position: top; /*Caso corte, mantem alinhado pelo topo*/
-  height: 1080px; /*Altura*/
-
-  /* Aplica o fade de todas as direções para dentro */
-  mask-image: radial-gradient(circle, rgb(0, 0, 0) 75%/* avanço do faded dentro da img*/, transparent 100%);
-    /* Ajustar a posição e tamanho da máscara */
-  -webkit-mask-size: 100% 100%;
-  mask-size: 5% /*quantidade de vzs que repete*/100%;
-
- .logo-hero{
-    height: 350px;
-    filter: invert();
-    z-index: 5;
-  } 
+        mask-image:
+          linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%),
+          
+          linear-gradient(to right, transparent 0%, black 10%, black 85%, transparent 100%);
+        mask-composite: intersect;
+      }
+}
+    
+    .logo img {
+    filter: invert(100%);
+    width: 70%;
+    margin-bottom: 100px;
 }
 
-.container-2{
+    .botao{
+      height: 50px;
+      width: 250px;
+      border-radius: 10px;
+    }
+    
+    .quadrado{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      display: flex;
+    }
+
   
 
-  .container-2-texto{
-    font-family: "IBM Plex Mono";
-    text-align: center;
-    padding: 0% 15%;
-    font-size: 14px;
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 2%;
+    justify-content: center; /* alinhamento vertical pq o flex ta column*/
+    background-color: rgb(20, 20, 20);
+    height: 70px;
+    align-items: center; /* alinhar na horizontal*/
+    position: static; /* se deixar fixo o bg do hero fica atras*/
+    border-top: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de cima */
+
+    p{
+      color: rgba(114, 114, 114, 0.45);
+    }
   }
 
-  .container-2-titulo{
-    font-family: "Cinzel";
-    text-align: center;
-    padding: 0% 10%;
-    font-size: 50px;
-  }
-}
-
-.video-passiva{
-  height: 300px;
-}
-
-.video-Q{
-  height: 300px;
-}
-
-.video-W{
-  height: 300px;
-}
-
-.video-E{
-  height: 300px;
-}
-
-.video-R{
-  height: 300px;
-}
+    .logoM{
+      height: 35px;
+      opacity: 0.2;
+      filter: invert(100%);
+      }
