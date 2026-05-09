@@ -1,24 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/img/fav-icon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-    <h1>Login</h1>
-        Login:
-        <input id="iptLogin" type="text" placeholder="Nome de usuário"> <br>
-        
-        Senha:
-        <input id="iptSenha" type="password" placeholder="••••••••"> <br>
-        
-        <button onclick="entrar()">Entrar</button> <br>
-        Não possui uma conta?<a href="cadastrar.html">Cadastre-se</a>
-        <div id="divMensagem"></div>
+    <header>
+        <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
+        <nav>
+            <ul>
+
+                <li>Lore</li>
+                <li>Habilidades</li>
+                <li>Skins</li>
+                <li>Guia do clone</li>
+                <li>Quiz</li>
+                <li class="icons"><a href="/public/login.html"> <img src="/public/assets/icons/user.png" alt=""></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-2">
+        <div class="login-card">
+
+            <h1>Login</h1>
+
+            <label>Login</label>
+            <input id="iptLogin" type="text" placeholder="Username">
+
+            <label>Senha</label>
+            <input id="iptSenha" type="password" placeholder="••••••••">
+
+            <button onclick="entrar()">Entrar</button>
+
+            <span>
+                Não possui uma conta?
+                <a href="cadastrar.html">Cadastre-se</a>
+            </span>
+
+            <div id="divMensagem"></div>
+
+        </div>
+
+        <div class="login-bg">
+            <img src="/public/assets/img/bg/desenho.png" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
+        </div>
+        <p>© 2026. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
-
 <script>
     function entrar() {
         let login = iptLogin.value;

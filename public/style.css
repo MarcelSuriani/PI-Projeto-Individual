@@ -33,131 +33,187 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
-  font-family: "TOmmy-B";
+  font-family: "Tommy-B";
 }
 
-/*Header*/
-header{
-    width: 100%;
+header {
+  width: 100%;
+  display: flex;
+  padding: 2%;
+  justify-content: space-between;
+  /*tipo de espaçamento*/
+  background-color: rgb(20, 20, 20);
+  height: 70px;
+  align-items: center;
+  /* alinhar itens entre eles no eixo vertical*/
+  position: top;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de baixo */
+  z-index: 50;
+
+  ul {
     display: flex;
-    padding: 2%;
-    justify-content: space-between; /*tipo de espaçamento*/
-    background-color: rgb(20, 20, 20);
-    height: 70px;
-    align-items: center; /* alinhar itens entre eles no eixo vertical*/
-    position: top; /* se deixar fixo o bg do hero fica atras*/
-    border-bottom: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de baixo */
-    z-index: 50;
-    
-    ul{
-        display: flex;
-        gap: 25px;
-        list-style-type: none;
-        background-color: rgb(255, 255, 255, 0.1);
-        padding: 16px 20px;
-        border-radius: 12px;
-        backdrop-filter: blur(20px);
-    }
-}
+    gap: 25px;
+    list-style-type: none;
+    background-color: rgb(255, 255, 255, 0.1);
+    padding: 16px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+  }
 
-.logoNav{
+  a {
+    font-family: "Tommy-B";
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .icons img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  .logoNav {
     height: 65px;
     filter: saturate(0);
     filter: brightness(100);
+  }
 }
 
-.container-1{
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 2%;
+  justify-content: center;
+  /* alinhamento vertical pq o flex ta column*/
+  background-color: rgb(20, 20, 20);
+  height: 70px;
+  align-items: center;
+  /* alinhar na horizontal*/
+  position: static;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-top: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de cima */
+
+  p {
+    color: rgba(114, 114, 114, 0.45);
+  }
+
+  .logoM {
+    height: 35px;
+    opacity: 0.2;
+    filter: invert(100%);
+  }
+}
+
+/* Home */
+.container-1 {
   width: 100%;
   height: calc(100dvh - 146px);
   background-color: rgba(0, 0, 0, 0.199);
   display: flex;
 
-    .hero{
-      width: 70%;
-      display: flex;
-      justify-content: center; /*HOrizontal*/
-      align-items: center; /*Vertical*/
-      background-color: rgb(0, 0, 0);
-      position: relative;
-    }
+  .hero {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    /*HOrizontal*/
+    align-items: center;
+    /*Vertical*/
+    background-color: rgb(0, 0, 0);
+    position: relative;
+  }
 
-      .container-1-botao{
-        position: absolute; /*pega a referencia a partir do relative do elemento pai*/
-        bottom: 50px;
-        display: flex;
-        flex-direction: row;
-        gap: 100px;
-        z-index: 2;
-        margin-bottom: 2%;
-}
-      .logo {
+  .container-1-btn {
+    position: absolute;
+    /*pega a referencia a partir do relative do elemento pai*/
+    bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    z-index: 2;
+    margin-bottom: 2%;
+  }
+
+  .logo {
     width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: center; /*HOrizontal*/
-    align-items: center; /*Vertical*/
-    }
-    
-      .hero img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        position: relative;
-        z-index: 1;
-  
-        mask-image:
-          linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%),
-          
-          linear-gradient(to right, transparent 0%, black 10%, black 85%, transparent 100%);
-        mask-composite: intersect;
-      }
-}
-    
-    .logo img {
+    justify-content: center;
+    /*HOrizontal*/
+    align-items: center;
+    /*Vertical*/
+  }
+
+  .hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    position: relative;
+    z-index: 1;
+
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%),
+
+      linear-gradient(to right, transparent 0%, black 10%, black 85%, transparent 100%);
+    mask-composite: intersect;
+  }
+
+  .logo img {
     filter: invert(100%);
     width: 70%;
     margin-bottom: 100px;
+  }
 }
 
-    .botao{
-      height: 50px;
-      width: 250px;
-      border-radius: 10px;
-    }
-    
-    .quadrado{
-      width: 200px;
-      height: 200px;
-      background-color: red;
-      display: flex;
-    }
 
-  
 
-footer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    
-    padding: 2%;
-    justify-content: center; /* alinhamento vertical pq o flex ta column*/
-    background-color: rgb(20, 20, 20);
-    height: 70px;
-    align-items: center; /* alinhar na horizontal*/
-    position: static; /* se deixar fixo o bg do hero fica atras*/
-    border-top: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de cima */
+.btn {
+  height: 50px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgb(193, 104, 118);
+  color: white;
+  border: none;
+  transition: 0.5s;
+}
 
-    p{
-      color: rgba(114, 114, 114, 0.45);
-    }
-  }
+.btn:hover {
+  background-color: #c50d0d;
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
-    .logoM{
-      height: 35px;
-      opacity: 0.2;
-      filter: invert(100%);
-      }
+/* login */
+.container-2 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  background-color: rgba(0, 0, 0, 0.199);
+  display: flex;
+}
+
+
+
+
+
+
+.quadrado {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  display: flex;
+}
