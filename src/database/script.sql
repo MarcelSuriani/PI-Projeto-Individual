@@ -1,0 +1,30 @@
+CREATE DATABASE projetoIndividual;
+
+USE projetoIndividual;
+
+CREATE TABLE usuario(
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+username VARCHAR(50) UNIQUE,
+email VARCHAR(50) UNIQUE,
+senha VARCHAR(30),
+telefone CHAR(11),
+dataCriacao DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Player(
+idPlayer INT PRIMARY KEY AUTO_INCREMENT,
+nickname VARCHAR(30) UNIQUE,
+fkUsuario INT,
+main VARCHAR(15),
+CONSTRAINT pfkIdUsuario FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
+
+
+CREATE TABLE Resposta (
+idResposta INT PRIMARY KEY AUTO_INCREMENT,
+fkUsuario INT,
+pontuacao INT,
+dataQuiz DATETIME DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT rfkUsuario FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
