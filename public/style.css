@@ -67,12 +67,16 @@ header {
   width: 100%;
   display: flex;
   padding: 0 2%;
-  justify-content: space-between; /*tipo de espaçamento*/
+  justify-content: space-between;
+  /*tipo de espaçamento*/
   background-color: rgb(20, 20, 20);
   height: 70px;
-  align-items: center;/* alinhar itens entre eles no eixo vertical*/
-  position: top; /* se deixar fixo o bg do hero fica atras*/
-  border-bottom: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de baixo */
+  align-items: center;
+  /* alinhar itens entre eles no eixo vertical*/
+  position: top;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de baixo */
   z-index: 50;
 
   ul {
@@ -94,14 +98,15 @@ header {
   .icons {
     display: flex;
     align-items: center;
-  
-  
-  
-    
-     img {
+
+
+
+
+    img {
       width: 20px;
       height: 20px;
-      object-fit: contain; /*Ajuste para não distorcer*/
+      object-fit: contain;
+      /*Ajuste para não distorcer*/
       cursor: pointer;
     }
   }
@@ -110,8 +115,8 @@ header {
     height: 60px;
   }
 
-  a:hover{
-    color:rgb(193, 104, 118);
+  a:hover {
+    color: rgb(193, 104, 118);
     transform: scale(1.05);
     cursor: pointer;
 
@@ -124,12 +129,16 @@ footer {
   flex-direction: column;
 
   padding: 2%;
-  justify-content: center; /* alinhamento vertical pq o flex ta column*/
+  justify-content: center;
+  /* alinhamento vertical pq o flex ta column*/
   background-color: rgb(20, 20, 20);
   height: 70px;
-  align-items: center;/* alinhar na horizontal*/
-  position: static; /* se deixar fixo o bg do hero fica atras*/
-  border-top: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de cima */
+  align-items: center;
+  /* alinhar na horizontal*/
+  position: static;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-top: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de cima */
 
   p {
     color: rgba(190, 180, 136, 0.685);
@@ -144,15 +153,22 @@ footer {
   }
 }
 
-.active{
+.active {
   color: rgb(193, 104, 118);
- 
-   img {
-  filter: brightness(0) saturate(100%) 
-          invert(56%) sepia(18%) saturate(1178%) 
-          hue-rotate(304deg) brightness(90%) contrast(88%);
+
+  img {
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(56%)
+    sepia(18%)
+    saturate(1178%)
+    hue-rotate(304deg)
+    brightness(90%)
+    contrast(88%);
+  }
 }
-}
+
 /* Home */
 .container-1 {
   width: 100%;
@@ -221,7 +237,7 @@ footer {
   border-radius: 10px;
   background-color: rgb(193, 104, 118);
   font-family: tommy-r;
-  color:rgb(190, 180, 136);
+  color: rgb(190, 180, 136);
   border: none;
   transition: 0.5s;
 }
@@ -248,43 +264,49 @@ footer {
   background-color: rgba(190, 180, 136, 0.418);
   backdrop-filter: blur(4px);
   box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.6);
-   border-right: 1px solid rgba(114, 114, 114, 0.45); /*Espessura e cor da margem de cima */
+  border-right: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de cima */
 
   display: flex;
-  flex-direction: column; /*direção*/
-  justify-content: center; /*Primeiro eixo*/
-  padding: 80px; /*pra desgrudar da borda*/
+  flex-direction: column;
+  /*direção*/
+  justify-content: center;
+  /*Primeiro eixo*/
+  padding: 80px;
+  /*pra desgrudar da borda*/
   gap: 5px;
 
-  label{
+  label {
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
+  }
+
   input {
     border-style: none;
     border-radius: 10px;
-    background-color:#ffffff69;
+    background-color: #ffffff69;
     backdrop-filter: blur(10);
     padding: 5%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
 
-  input:focus{
+  input:focus {
     outline: none;
     border: none;
     background-color: #ffffff69;
   }
-  
-  label{
+
+  label {
     font-family: tommy-b;
   }
+
   button {
     margin-top: 30px;
     border-style: none;
     border-radius: 10px;
-    background-color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     backdrop-filter: blur(10);
     padding: 5%;
     transition: 0.5s;
@@ -293,12 +315,14 @@ footer {
     letter-spacing: 3px;
 
   }
-  button:hover {
-  background-color: rgb(193, 104, 118);
-  cursor: pointer;
 
-}
-  a{
+  button:hover {
+    background-color: rgb(193, 104, 118);
+    cursor: pointer;
+
+  }
+
+  a {
     letter-spacing: 1px;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -306,19 +330,19 @@ footer {
     transition: 0.5s;
   }
 
-  a:hover{
+  a:hover {
     color: rgb(193, 104, 118);
     cursor: pointer;
   }
 }
 
-.login-logo{
+.login-logo {
   display: flex;
   justify-content: center;
   margin-top: -100px;
-  
-  
-  img{
+
+
+  img {
     width: 300px;
     filter: invert();
     justify-self: center;
@@ -329,7 +353,14 @@ footer {
   height: 100%;
 }
 
-
+.container-3 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  display: flex;
+  background-color: #c50d0d;
+  background-size: cover;
+  filter: sepia(10%);
+}
 
 
 .quadrado {
