@@ -471,3 +471,47 @@ footer {
     letter-spacing: 2px;
     font-size: 14px;
 }
+
+.container-4 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  background-size: cover;
+  filter: sepia(10%);
+}
+
+.container-5 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 136, 1);
+  background-size: cover;
+  filter: sepia(10%);
+}
+
+.container-6 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(5, 1, 255);
+  background-size: cover;
+  filter: sepia(10%);
+}
+
+.container-7 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(181, 0, 218);
+  background-size: cover;
+  filter: sepia(10%);
+}

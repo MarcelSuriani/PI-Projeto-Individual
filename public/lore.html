@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Lore</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/img/fav-icon.png" type="image/png">
@@ -15,50 +16,80 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <header>
         <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
         <nav>
             <ul>
-                <li>Lore</li>
-                <li>Habilidades</li>
-                <li>Skins</li>
-                <li>Guia do clone</li>
-                <li>Quiz</li>
-                <li class="icons" ><a href="/public/login.html"> <img src="/public/assets/icons/user.png" alt=""></a></li>
+                <li class="active"><a href="/public/lore.html">LORE</a></li>
+                <li><a href="/public/habilidades.html">HABILIDADES E SKINS</a></li>
+                <li><a href="/public/guia.html">GUIA DO CLONE</a></li>
+                <li><a href="/public/quiz.html">QUIZ</a></li>
+                <li class="icons"><a href="/public/login.html"> <img src="/public/assets/icons/enter.png" alt=""></a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <!--  seção 01 -->
-    <div class="container-1">
-        <div class="logo">
-            <!-- <div class="quadrado" ></div> teste de posicionamento de flexbox, apagar depois -->
-            <img src="/public/assets/img/logo-Shaco-completo.png" alt="">
-        </div>
-        <div class="hero">
-            <!-- <div class="quadrado" ></div> teste de posicionamento de flexbox, apagar depois -->
-            <!-- <img src="/public/assets/img/bg/bg.jpg" alt=""> -->
-            <video autoplay muted loop playsinline>
-    <source class="mp4" src="/public/assets/img/bg/bg-loop.mp4" type="video/mp4">
-</video>
-            <div class="container-1-botao" >
-                <button class="btn" onclick="botao1">Conheça a Lore</button>
-                <button class="btn" onclick="botao1">Cadastre-se!</button>
-            </div>
-        </div>
+    <div class="container-4">
+        A história de Shaco nunca foi feita para ser entendida — apenas sentida. E o que ela provoca… não é conforto. --- Antes de existir um nome, antes de existir um rosto… existia algo mais antigo. O caos. Não o caos como desordem simples, mas como uma força viva — silenciosa, paciente, observando. Ele não destrói por necessidade. Ele espera. Ele se infiltra. Ele brinca. Em algum ponto da história de League of Legends, esse caos encontrou uma oportunidade. Um quarto infantil. Um príncipe solitário. E um boneco. --- O brinquedo era inofensivo. Feito para arrancar risadas, com um sorriso exagerado costurado no rosto. Ele não pensava, não sentia, não existia além da função de entreter. Mas o caos… precisa de muito pouco. Uma tragédia. Um momento de dor pura. Um vazio. E então ele entra. --- Naquela noite, algo aconteceu. Ninguém sabe dizer se foi assassinato, magia proibida ou algo ainda pior. O príncipe desapareceu — e com ele, qualquer resquício de inocência naquele lugar. Mas o verdadeiro nascimento… não foi o da morte. Foi o de Shaco. --- O caos não criou algo novo. Ele ocupou o que já existia. Preencheu o vazio deixado pela perda, distorceu o propósito do boneco e deu a ele algo que nunca deveria ter tido: Consciência. Mas não uma consciência humana. Uma consciência sem empatia. Sem lógica. Sem limite. --- O sorriso permaneceu. Mas agora ele não representa alegria. Representa a quebra dela. --- Shaco não mata por ódio. Não busca vingança. Não tem passado no sentido humano. Ele executa algo muito mais primitivo: Ele brinca com a ordem. Cada armadilha que ele arma não é só para ferir — é para confundir. Cada movimento não é só ataque — é encenação. Cada riso não é emoção — é ruído. Ele transforma lógica em erro. Expectativa em falha. Controle em ilusão. --- Porque o caos não quer destruir o mundo. Ele quer provar que o mundo nunca esteve sob controle. --- Alguns dizem que ainda existe algo do antigo boneco ali dentro. Outros acreditam que o príncipe nunca saiu daquele quarto — apenas mudou de forma. Mas há uma terceira hipótese. Mais incômoda. --- E se Shaco não for o resultado do caos… Mas sim a prova de que o caos sempre esteve lá? Esperando um palco. Esperando um rosto. Esperando alguém… para rir. --- E quando você ouvir esse riso… não será um aviso. Será o começo do jogo. me forneça algumas ilustrações para alguns desses versos
     </div>
 
-
-        <footer>
-            <div>
-                <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
-            </div>
-            <p>© 2026. Todos os direitos reservados.</p>
-        </footer>
-    </body>
+    <footer>
+        <div>
+            <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
+        </div>
+        <p>© 2026. Todos os direitos reservados.</p>
+    </footer>
+</body>
 </html>
-        
+<script>
+    function entrar() {
+        let login = iptLogin.value;
+        let senha = iptSenha.value;
 
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usernameServer: login,
+                senhaServer: senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+            alert("Erro ao tentar conectar. Login e/ou senha inválidos!")
+        })
+
+    }
+</script>
