@@ -25,8 +25,7 @@
         <nav>
             <ul>
                 <li><a href="/public/lore.html">LORE</a></li>
-                <li><a href="/public/lore.html">HABILIDADES</a></li>
-                <li><a href="/public/lore.html">SKINS</a></li>
+                <li><a href="/public/lore.html">HABILIDADES E SKINS</a></li>
                 <li><a href="/public/lore.html">GUIA DO CLONE</a></li>
                 <li><a href="/public/lore.html">QUIZ</a></li>
                 <li class="icons active"><a href="/public/login.html"> <img src="/public/assets/icons/enter.png"
@@ -37,39 +36,60 @@
     </header>
     <div class="container-3">
         <div class="cadastro-card">
-            <label for="">Nome:</label>
-            <input type="text" id="iptNomeCompleto" placeholder="Nome completo"> <br>
-            
-            <label for="">Digite seu email:</label>
-            <input type="text" id="iptEmail" placeholder="seu@email.com"> <br>
-            
-            <label for="">Nome de Usuario:</label>
-            <input type="text" id="iptNomeDeUsuario" placeholder="Nome de usuário"> <br>
-            
-            <label for="">Senha:</label>
-            <input type="password" id="iptSenha" placeholder="Senha"> <br>
-            
-            <label for="">Confirme a senha:</label>
-            <input type="password" id="iptConfirmarSenha" placeholder="Confirme a senha"> <br>
-            
-            <label for="">Telefone:</label>
-            <input type="text" id="iptTelefone" placeholder="Número de celular"> <br>
-            
-            <button onclick="cadastrar()">Cadastrar</button> <br>
+            <div class="cadastro-logo">
+                <img src="/public/assets/img/logo-Shaco-completo.png" alt="">
+            </div>
+            <div class="cadastro-linha">
+                <div class="campo">
+                    <label for="">Nome:</label>
+                    <input type="text" id="iptNomeCompleto" placeholder="Nome completo">
+                </div>
+                <div class="campo">
+                    <label for="">Nome de Usuario:</label>
+                    <input type="text" id="iptNomeDeUsuario" placeholder="Nome de usuário">
+                </div>
+            </div>
+            <div class="cadastro-linha">
+                <div class="campo">
+                    <label for="">Senha:</label>
+                    <input type="password" id="iptSenha" placeholder="Senha">
+                </div>
+                <div class="campo">
+                    <label for="">Confirme a senha:</label>
+                    <input type="password" id="iptConfirmarSenha" placeholder="Confirme a senha">
+                </div>
+            </div>
+            <div class="cadastro-linha">
+                <div class="campo">
+                    <label for="">Email:</label>
+                    <input type="text" id="iptEmail" placeholder="seu@email.com">
+                </div>
+                <div class="campo">
+                    <label for="">Telefone:</label>
+                    <input type="text" id="iptTelefone" placeholder="Número de celular">
+                </div>
+            </div>
+            <div class=".cadastro-card">
+
+                <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+
             <span>
                 Já possui uma conta?
-                <a href="login.html">Clique aqui!</a>
+                <a href="login.html">Clique aqui para se conectar</a>
             </span>
-            
+            <div class="cadastro-mensagem" id="divMensagem"></div>
         </div>
-        <div id="divMensagem"></div>
     </div>
+
     <footer>
         <div>
             <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
         </div>
         <p>© 2026. Todos os direitos reservados.</p>
     </footer>
+
+
 
 </body>
 
