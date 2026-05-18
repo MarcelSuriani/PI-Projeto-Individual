@@ -521,7 +521,7 @@ footer {
 .capitulos-art::after {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: 0; /*tipo padding só que estica pro elemento pai*/
   background: linear-gradient(to bottom,  black 0%,
     rgba(20, 20, 20, 0.788) 10%,
     rgba(20, 20, 20, 0.5) 15%,
@@ -600,7 +600,7 @@ footer {
   background-size: cover;
 }
 
-.habilidades-container {
+.container-6 {
   display: flex;
   flex-direction: column;
 }
@@ -616,24 +616,121 @@ footer {
 
 .skill-info {
   flex: 1; /* pega o resto do width entre icone e video*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.skill-container:last-child {
-  border-bottom: none; /*pra não ficar duplicado o border com o footer*/
-}
+/* .skill-container:last-child {
+  border-bottom: none; pra não ficar duplicado o border com o footer
+} */
 .skill-icone {
   width: 60px;
   height: 60px;
   border-radius: 10px;
   object-fit: cover;
+  flex-shrink: 0; /* evita distorcer com aumento da largura*/
 }
 
 .skill-video {
-  width: 520px;
+  width: 480px;
   border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0; /* evita distorcer com aumento da largura*/
+}
+
+
+.skill-cabecalho {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.skill-nome {
+  font-size: 16px;
+  margin: 0px; 
+  color: #a3a3a3;
+}
+
+.skill-key {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: rgb(190, 180, 136);
+  color: #202020;
+  border: 1px solid rgba(114, 114, 114, 0.45);
+  letter-spacing: 2px;
+}
+
+.skill-descricao {
+  font-size: 14px;
+  color: rgb(199, 196, 185);
+  line-height: 150%; /*equivalente a configuração de espaçamento entre linhas do Ps, word,etc...*/
+  margin: 0px;
+}
+
+.container-7 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container-7-titulo {
+  text-align: center;
+  font-family: CrazyKiller;
+  width: 100%;
+  font-size: 50px;
+  letter-spacing: 5px;
+  color: rgb(134, 130, 111);
+  padding: 60px;
+}
+
+.skin-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+}
+
+.skin-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skin-nome {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0px;
+  color: #a3a3a3;
+}
+
+.skin-descricao {
+  font-size: 14px;
+    color: rgb(199, 196, 185);
+  line-height: 150%;
+  margin: 0px;
+}
+
+.skin-video {
+ max-width: 360px;
   object-fit: cover;
   flex-shrink: 0;
 }
+
+.skin-splash {
+  max-width: 720px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+  .skin-splash {
+    width: 100%;
+    height: auto;
+  }
+
+
 
 
 
@@ -659,3 +756,9 @@ footer {
   background-size: cover;
   filter: sepia(10%);
 } */
+
+/* 
+titulo #a3a3a3 
+descricao rgb(199, 196, 185);
+header rgb(190, 180, 136);
+*/
