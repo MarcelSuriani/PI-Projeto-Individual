@@ -621,8 +621,19 @@ footer {
 .skill-container:last-child {
   border-bottom: none; /*pra não ficar duplicado o border com o footer*/
 }
+.skill-icone {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
 
-
+.skill-video {
+  width: 520px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
 
 
