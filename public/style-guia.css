@@ -162,201 +162,6 @@ footer {
   }
 }
 
-/* Home */
-.container-1 {
-  width: 100%;
-  height: calc(100dvh - 146px);
-  background-color: rgba(0, 0, 0, 0.199);
-  display: flex;
-
-  .hero {
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    /*HOrizontal*/
-    align-items: center;
-    /*Vertical*/
-    background-color: rgb(0, 0, 0);
-    position: relative;
-  }
-
-  .container-1-btn {
-    position: absolute;
-    /*pega a referencia a partir do relative do elemento pai*/
-    bottom: 50px;
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    z-index: 2;
-    margin-bottom: 2%;
-  }
-
-  .logo {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /*HOrizontal*/
-    align-items: center;
-    /*Vertical*/
-  }
-
-  .hero video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    position: relative;
-    z-index: 1;
-
-    mask-image:
-      linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%),
-
-      linear-gradient(to right, transparent 0%, black 10%, black 85%, transparent 100%);
-    mask-composite: intersect;
-  }
-
-  .logo img {
-    width: 70%;
-    margin-bottom: 100px;
-  }
-}
-
-
-
-.btn {
-  height: 50px;
-  width: 250px;
-  border-radius: 10px;
-  background-color: rgb(193, 104, 118);
-  font-family: tommy-r;
-  color: rgb(190, 180, 136);
-  border: none;
-  transition: 0.5s;
-}
-
-.btn:hover {
-  background-color: #c50d0d;
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-/* login */
-.container-2 {
-  width: 100%;
-  height: calc(100dvh - 146px);
-  display: flex;
-  background-image: url(/public/assets/img/bg/desenho.png);
-  background-size: cover;
-  filter: sepia(10%);
-}
-
-.login-card {
-  width: 25%;
-  height: 100%;
-  background-color: rgba(190, 180, 136, 0.65);
-  backdrop-filter: blur(4px);
-  box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.6);
-  border-right: 1px solid rgba(114, 114, 114, 0.45);
-  /*Espessura e cor da margem direita */
-
-  display: flex;
-  flex-direction: column;
-  /*direção*/
-  justify-content: center;
-  /*Primeiro eixo*/
-  padding: 80px;
-  /*pra desgrudar da borda*/
-  gap: 5px;
-
-  label {
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  input {
-    border-style: none;
-    border-radius: 10px;
-    background-color: #ffffff69;
-    backdrop-filter: blur(10);
-    padding: 5%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  input:focus {
-    outline: none;
-    border: none;
-    background-color: #ffffff69;
-  }
-
-  label {
-    font-family: tommy-b;
-  }
-
-  button {
-    margin-top: 30px;
-    border-style: none;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
-    backdrop-filter: blur(10);
-    padding: 5%;
-    transition: 0.5s;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    font-family: tommy-r;
-    letter-spacing: 3px;
-
-  }
-
-  button:hover {
-    background-color: rgb(193, 104, 118);
-    cursor: pointer;
-
-  }
-
-  a {
-    letter-spacing: 1px;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    transition: 0.5s;
-  }
-
-  a:hover {
-    color: rgb(193, 104, 118);
-    cursor: pointer;
-  }
-}
-
-.login-logo {
-  display: flex;
-  justify-content: center;
-  margin-top: -100px;
-
-
-  img {
-    width: 300px;
-    filter: invert();
-    justify-self: center;
-  }
-}
-
-.login-bg {
-  width: 70%;
-  height: 100%;
-}
-
-.container-3 {
-  width: 100%;
-  height: calc(100dvh - 146px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(/public/assets/img/bg/desenho.png);
-  background-size: cover;
-  filter: sepia(10%);
-}
 
 .cadastro-card {
   width: 35%;
@@ -417,9 +222,9 @@ footer {
 }
 
 .cadastro-linha {
-  display: flex;
-  gap: 15px;
-  width: 100%;
+    display: flex;
+    gap: 15px;
+    width: 100%;
 
   input {
     height: 30px;
@@ -459,32 +264,32 @@ footer {
 }
 
 .cadastro-mensagem {
-  position: absolute;
-  margin-top: 680px;
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-  background-color: rgb(220, 0, 0);
-  font-family: tommy-l;
-  text-align: center;
-  letter-spacing: 2px;
-  font-size: 14px;
+    position: absolute;
+    margin-top: 680px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(220, 0, 0);
+    font-family: tommy-l;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 14px;
 }
 
 /* lore */
 .container-4 {
   width: 100%;
   height: calc(92dvh - 140px);
-  background: linear-gradient(to bottom,
-      black 0%,
-      rgba(20, 20, 20, 0.788) 5%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%),
+  background:linear-gradient(to bottom,
+    black 0%,
+    rgba(20, 20, 20, 0.788) 5%,
+    rgba(20, 20, 20, 0.5) 15%,
+    transparent 30%, 
+    transparent 75%,
+    rgba(20, 20, 20, 0.5) 85%,
+    rgba(20, 20, 20, 0.788) 95%,
+    black 100%),
     url(/public/assets/img/Lore/BG2.png);
   background-size: cover;
   filter: sepia(35%);
@@ -511,37 +316,34 @@ footer {
 }
 
 .capitulos-art {
-  position: relative;
-  /*pro gradiante ::after*/
+  position: relative; /*pro gradiante ::after*/
   width: 35%;
   max-height: 400px;
-  overflow: hidden;
-  /*corta o excedente*/
+  overflow: hidden; /*corta o excedente*/
 }
 
 
 .capitulos-art::after {
   content: '';
   position: absolute;
-  inset: 0;
-  /*tipo padding só que estica pro elemento pai*/
-  background: linear-gradient(to bottom, black 0%,
-      rgba(20, 20, 20, 0.788) 10%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%),
+  inset: 0; /*tipo padding só que estica pro elemento pai*/
+  background: linear-gradient(to bottom,  black 0%,
+    rgba(20, 20, 20, 0.788) 10%,
+    rgba(20, 20, 20, 0.5) 15%,
+    transparent 30%, 
+    transparent 75%,
+    rgba(20, 20, 20, 0.5) 85%,
+    rgba(20, 20, 20, 0.788) 95%,
+    black 100%),
 
-    linear-gradient(to right, black 0%,
-      rgba(20, 20, 20, 0.788) 5%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%);
+    linear-gradient(to right,  black 0%,
+    rgba(20, 20, 20, 0.788) 5%,
+    rgba(20, 20, 20, 0.5) 15%,
+    transparent 30%, 
+    transparent 75%,
+    rgba(20, 20, 20, 0.5) 85%,
+    rgba(20, 20, 20, 0.788) 95%,
+    black 100%);
 }
 
 
@@ -550,16 +352,14 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  /*remove espaço embaixo da imagem*/
+  display: block; /*remove espaço embaixo da imagem*/
   filter: sepia(30%);
 }
 
 
 
 .capitulo-texto {
-  flex: 1;
-  /* pega o resto do width da imagem*/
+  flex: 1; /* pega o resto do width da imagem*/
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
@@ -588,76 +388,62 @@ footer {
 }
 
 
-/*HERO HABILIDADES E SKINS*/
-.container-5 {
-  width: 100%;
+/*HABILIDADES E SKINS*/
+ .container-5 {
+    width: 100%;
   height: calc(92dvh - 140px);
-  background: linear-gradient(to bottom,
-      black 0%,
-      rgba(20, 20, 20, 0.788) 5%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%),
+  background:linear-gradient(to bottom,
+    black 0%,
+    rgba(20, 20, 20, 0.788) 5%,
+    rgba(20, 20, 20, 0.5) 15%,
+    transparent 30%, 
+    transparent 75%,
+    rgba(20, 20, 20, 0.5) 85%,
+    rgba(20, 20, 20, 0.788) 95%,
+    black 100%),
     url(/public/assets/img/bg/SHACO03.png);
   background-size: cover;
 }
 
-/*HABILIDADES*/
 .container-6 {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding: 0 35px;
+  flex-direction: column;
 }
 
 .skill-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   gap: 15px;
-  padding: 0px 20px;
-  flex: 1;
-  min-width: 0px;
+  padding: 50px 50px;
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  align-items: start;
 }
-
-.skill-video {
-  width: 100%;
-  max-height: 360px;
-  border-radius: 10px;
-  object-fit: cover;
-  border: 1px solid rgba(190, 180, 136);
-}
-
-.skill-descricao {
-  font-size: 14px;
-  color: rgb(199, 196, 185);
-  line-height: 150%;
-  margin: 0px;
-  width: 90%;
-  text-align: justify
-}
-
 
 .skill-info {
+  flex: 1; /* pega o resto do width entre icone e video*/
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   gap: 10px;
-  width: 100%;
 }
 
+/* .skill-container:last-child {
+  border-bottom: none; pra não ficar duplicado o border com o footer
+} */
 .skill-icone {
   width: 60px;
   height: 60px;
   border-radius: 10px;
   object-fit: cover;
-  border: 0.5px solid rgba(135, 133, 120, 0.615);
+  flex-shrink: 0; /* evita distorcer com aumento da largura*/
 }
+
+.skill-video {
+  width: 480px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0; /* evita distorcer com aumento da largura*/
+}
+
 
 .skill-cabecalho {
   display: flex;
@@ -666,9 +452,9 @@ footer {
 }
 
 .skill-nome {
-  font-size: 24px;
-  margin: 0px;
-  color: rgb(190, 180, 136);
+  font-size: 16px;
+  margin: 0px; 
+  color: #a3a3a3;
 }
 
 .skill-key {
@@ -677,11 +463,17 @@ footer {
   border-radius: 5px;
   background: rgb(190, 180, 136);
   color: #202020;
-  border: 1px solid rgba(190, 180, 136);
+  border: 1px solid rgba(114, 114, 114, 0.45);
   letter-spacing: 2px;
 }
 
-/*Skins*/
+.skill-descricao {
+  font-size: 14px;
+  color: rgb(199, 196, 185);
+  line-height: 150%; /*equivalente a configuração de espaçamento entre linhas do Ps, word,etc...*/
+  margin: 0px;
+}
+
 .container-7 {
   display: flex;
   flex-direction: column;
@@ -702,10 +494,7 @@ footer {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  align-items: start;
-  margin: 0px 0px;
-  padding: 50px 35px;
-  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  align-items: center;
 }
 
 .skin-info {
@@ -713,49 +502,41 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 .skin-nome {
-  font-size: 24px;
+  font-size: 16px;
   margin: 0px;
-  color: rgb(190, 180, 136);
+  color: #a3a3a3;
 }
 
 .skin-descricao {
   font-size: 14px;
-  color: rgb(199, 196, 185);
+    color: rgb(199, 196, 185);
   line-height: 150%;
-  margin: 0px auto;
-  text-align: center;
-  max-width: 720px;
-  margin: 0px auto;
-
-  text-align: justify;
+  margin: 0px;
 }
 
 .skin-video {
-  max-width: 480px;
+ max-width: 360px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .skin-splash {
-  max-width: 720px;
+  max-width: 550px;
   object-fit: cover;
   flex-shrink: 0;
-  border: 1px solid rgba(190, 180, 136);
+  border: 1px solid rgba(199, 196, 185, 0.564);
   border-radius: 10px;
-  margin-left: 20px;
+ 
 }
 
-.skin-splash {
-  width: 100%;
-  height: auto;
-  margin-right: 20px;
-}
+  .skin-splash {
+    width: 100%;
+    height: auto;
+    margin-right: 20px;
+  }
 
 
 
