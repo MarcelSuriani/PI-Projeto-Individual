@@ -476,9 +476,6 @@ footer {
 .container-4 {
   width: 100%;
   height: calc(92dvh - 140px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background:linear-gradient(to bottom,
     black 0%,
     rgba(20, 20, 20, 0.788) 5%,
@@ -586,19 +583,51 @@ footer {
 }
 
 
-
-/* .container-5 {
-  width: 100%;
-  height: calc(100dvh - 146px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(255, 136, 1);
+/*HABILIDADES E SKINS*/
+ .container-5 {
+    width: 100%;
+  height: calc(92dvh - 140px);
+  background:linear-gradient(to bottom,
+    black 0%,
+    rgba(20, 20, 20, 0.788) 5%,
+    rgba(20, 20, 20, 0.5) 15%,
+    transparent 30%, 
+    transparent 75%,
+    rgba(20, 20, 20, 0.5) 85%,
+    rgba(20, 20, 20, 0.788) 95%,
+    black 100%),
+    url(/public/assets/img/bg/SHACO03.png);
   background-size: cover;
-  filter: sepia(10%);
 }
 
-.container-6 {
+.habilidades-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding: 50px 50px;
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  align-items: start;
+}
+
+.skill-info {
+  flex: 1; /* pega o resto do width entre icone e video*/
+}
+
+.skill-container:last-child {
+  border-bottom: none; /*pra não ficar duplicado o border com o footer*/
+}
+
+
+
+
+
+
+/* .container-6 {
   width: 100%;
   height: calc(100dvh - 146px);
   display: flex;
