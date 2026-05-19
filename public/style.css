@@ -752,25 +752,28 @@ footer {
 .skin-video {
   max-width: 480px;
   object-fit: cover;
-  flex-shrink: 0;
-}
+  flex-shrink: 0;}
 
-.skin-splash {
-  max-width: 720px;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 1px solid rgba(190, 180, 136);
-  border-radius: 10px;
-  margin-left: 20px;
-}
-
-.skin-splash {
-  width: 100%;
-  height: auto;
-  margin-right: 20px;
-}
-
-
+  
+  .skin-splash {
+    max-width: 720px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(190, 180, 136);
+    border-radius: 10px;
+    margin-left: 20px;
+  }
+  
+  .skin-splash {
+    width: 100%;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  
+  /* model-viewer{
+    height: 480px;
+  } */
 
 /* .quadrado {
   width: 200px;

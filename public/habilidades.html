@@ -17,11 +17,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 
+  <!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"> </script> -->
 </head>
 
 <body>
   <header>
-    <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
+    <a href="/public/index.html">
+      <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
+    </a>
     <nav>
       <ul>
         <li></li><a href="/public/lore.html">LORE</a></li>
@@ -116,6 +119,17 @@
         <div class="skin-info">
           <video class="skin-video" autoplay muted loop playsinline
             src="/public/assets/img/skins/videos/shaco_01.mp4"></video>
+
+        <!--  <model-viewer class="skin-video"
+                src="/public/assets/glb/shaco_01.glb"
+                autoplay
+                animation-name="Idle2"
+                camera-controls
+                auto-rotate
+                rotation-per-second="30deg"
+                shadow-intensity="1">
+              </model-viewer> -->
+
             <h2 class="skin-nome">Classic Shaco</h2>
             <img class="skin-splash" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Shaco_0.jpg"
             alt="Splash Art Classic Shaco">
