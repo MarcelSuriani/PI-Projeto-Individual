@@ -33,7 +33,7 @@
   font-family: CrazyKiller;
   src: url(/public/assets/font/Crazy-Killer/Crazy-Killer.TTF) format('truetype');
   text-decoration: none;
-
+  
 }
 
 .ibm-plex-mono-regular {
@@ -78,7 +78,7 @@ header {
   border-bottom: 1px solid rgba(114, 114, 114, 0.45);
   /*Espessura e cor da margem de baixo */
   z-index: 50;
-
+  
   ul {
     display: flex;
     gap: 35px;
@@ -86,7 +86,7 @@ header {
     backdrop-filter: blur(20px);
     font-size: 12px;
   }
-
+  
   a {
     letter-spacing: 1px;
     text-decoration: none;
@@ -94,11 +94,14 @@ header {
     font-weight: bold;
     transition: 0.5s;
   }
-
+  .active a  {
+    color: rgb(193, 104, 118);
+  }
+  
   .icons {
     display: flex;
     align-items: center;
-
+    
 
 
 
@@ -153,18 +156,6 @@ footer {
   }
 }
 
-.active {
-  
-  a{
-    color: rgb(193, 104, 118);
-
-  }
-
-  img {
-    filter:
-      brightness(0) saturate(100%) invert(56%) sepia(18%) saturate(1178%) hue-rotate(304deg) brightness(90%) contrast(88%);
-  }
-}
 
 /*HERO HABILIDADES E SKINS*/
 .container-5 {
@@ -179,7 +170,7 @@ footer {
       rgba(20, 20, 20, 0.5) 85%,
       rgba(20, 20, 20, 0.788) 95%,
       black 100%),
-    url(/public/assets/img/bg/SHACO03.png);
+    url(/public/assets/img/bg/SHACO02.png);
   background-size: cover;
 }
 

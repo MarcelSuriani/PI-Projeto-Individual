@@ -156,6 +156,10 @@ footer {
 .active {
   color: rgb(193, 104, 118);
 
+  a {
+    color: rgb(193, 104, 118);
+  }
+
   img {
     filter:
       brightness(0) saturate(100%) invert(56%) sepia(18%) saturate(1178%) hue-rotate(304deg) brightness(90%) contrast(88%);
