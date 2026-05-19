@@ -2,80 +2,111 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
 
-    <link rel="stylesheet" href="style-quiz.css">
-    <link rel="icon" href="assets/img/fav-icon.png" type="image/png">
+  <link rel="stylesheet" href="style-quiz.css">
+  <link rel="icon" href="assets/img/fav-icon.png" type="image/png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <header>
-        <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
-        <nav>
-            <ul>
-                <li><a href="/public/lore.html">LORE</a></li>
-                <li><a href="/public/habilidades.html">HABILIDADES E SKINS</a></li>
-                <li><a href="/public/guia.html">GUIA DO CLONE</a></li>
-                <li class="active"><a href="/public/quiz.html">QUIZ</a></li>
-                <li class="icons"><a href="/public/login.html"> <img src="/public/assets/icons/enter.png" alt=""></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
+    <nav>
+      <ul>
+        <li><a href="/public/lore.html">LORE</a></li>
+        <li><a href="/public/habilidades.html">HABILIDADES E SKINS</a></li>
+        <li><a href="/public/guia.html">GUIA DO CLONE</a></li>
+        <li class="active"><a href="/public/quiz.html">QUIZ</a></li>
+        <li class="icons"><a href="/public/login.html"> <img src="/public/assets/icons/enter.png" alt=""></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="container-5"></div>
-    <div class="lore-titulo">QUIZ DO CLONE</div>
+  <div class="container-8">
+    <div class="hero" >
+      <video autoplay muted loop playsinline>
+        <source class="mp4" src="/public/assets/img/bg/BG-QUIZ.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="quiz-titulo">QUIZ DO CLONE</div>
 
-<form>
+  <form>
 
-  <p>01</p>
-  <p>O que Shaco era antes de ser corrompido pelo caos?</p>
+    <div class="quiz-container">
+      <span class="quiz-numero">01</span>
+      <p class="quiz-texto">O que Shaco era antes de ser corrompido pelo caos?</p>
+    </div>
 
-  <label>
-    <input type="radio" name="iptQuizUm" value="a">
-    Um assassino contratado
-  </label><br>
+    <div class="quiz-opcoes">
+      <label class="quiz-opcao">
+        <span class="quiz-letra">A</span>
+        <input type="radio" name="iptQuizUm" value="a">
+        <span class="quiz-resposta">Um assassino contratado</span>
+      </label>
+      <label class="quiz-opcao">
+        <span class="quiz-letra">B</span>
+        <input type="radio" name="iptQuizUm" value="b">
+        <span class="quiz-resposta">Um brinquedo de um príncipe solitário</span>
+      </label>
+      <label class="quiz-opcao">
+        <span class="quiz-letra">C</span>
+        <input type="radio" name="iptQuizUm" value="c">
+        <span class="quiz-resposta">Um espírito antigo sem forma</span>
+      </label>
+      <label class="quiz-opcao">
+        <span class="quiz-letra">D</span>
+        <input type="radio" name="iptQuizUm" value="d">
+        <span class="quiz-resposta">Um soldado do exército real</span>
+      </label>
+    </div>
 
-  <label>
-    <input type="radio" name="iptQuizUm" value="b">
-    Um brinquedo de um príncipe solitário
-  </label><br>
+    <div class="quiz-container">
+      <span class="quiz-numero">02</span>
+      <p class="quiz-texto">Shaco mata por ódio e busca vingança contra quem destruiu sua vida.</p>
+    </div>
+    <div class="quiz-opcoes">
+      <label class="quiz-opcao">
+        <span class="quiz-letra">A</span>
+        <input type="radio" name="iptQuizDois" value="verdadeiro">
+        <span class="quiz-resposta">Verdadeiro</span>
+      </label>
+      <label class="quiz-opcao">
+        <span class="quiz-letra">B</span>
+        <input type="radio" name="iptQuizDois" value="falso">
+        <span class="quiz-resposta">Falso</span>
+      </label>
+    </div>
 
-  <label>
-    <input type="radio" name="iptQuizUm" value="c">
-    Um espírito antigo sem forma
-  </label><br>
+    <button>Enviar</button>
 
-  <label>
-    <input type="radio" name="iptQuizUm" value="d">
-    Um soldado do exército real
-  </label> <br><br>
+  </form>
+  <footer>
+    <div>
+      <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
+    </div>
+    <p>© 2026. Todos os direitos reservados.</p>
+  </footer>
+</body>
 
-  <p>02</p>
-  <p>Shaco mata por ódio e busca vingança contra quem destruiu sua vida.</p>
+</html>
+<script>
 
-  <label>
-    <input type="radio" name="iptQuizDois" value="verdadeiro">
-    Verdadeiro
-  </label><br>
+</script>
 
-  <label>
-    <input type="radio" name="iptQuizDois" value="falso">
-    Falso
-  </label> <br><br>
-
-  <p>03</p>
+<!-- <p>03</p>
   <p>Qual é o efeito da passiva do Shaco, Apunhalar?</p>
 
   <label>
@@ -312,19 +343,4 @@
     <option value="16">Shaco Gatinho-Surpresa</option>
     <option value="17">Shaco Pandemonio de prestigio</option>
     <option value="17">Shaco McDonalds</option>
-  </select> <br><br>
-
-
-  <button>Enviar</button>
-
-</form>
-    <footer>
-        <div>
-            <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
-        </div>
-        <p>© 2026. Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
-<script>
-</script>
+  </select> <br><br> -->
