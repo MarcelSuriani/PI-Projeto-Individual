@@ -452,11 +452,6 @@ footer {
   }
 }
 
-.quadrado {
-  width: 200px;
-  height: 200px;
-  background-color: red;
-}
 
 .cadastro-mensagem {
   position: absolute;
@@ -477,15 +472,15 @@ footer {
   width: 100%;
   height: calc(92dvh - 140px);
   background: linear-gradient(to bottom,
-      black 0%,
-      rgba(20, 20, 20, 0.788) 5%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%),
-    url(/public/assets/img/Lore/BG2.png);
+  black 0%,
+  rgba(20, 20, 20, 0.788) 5%,
+  rgba(20, 20, 20, 0.5) 15%,
+  transparent 30%,
+  transparent 75%,
+  rgba(20, 20, 20, 0.5) 85%,
+  rgba(20, 20, 20, 0.788) 95%,
+  black 100%),
+  url(/public/assets/img/Lore/BG2.png);
   background-size: cover;
   filter: sepia(35%);
   background-size: cover;
@@ -526,22 +521,22 @@ footer {
   inset: 0;
   /*tipo padding só que estica pro elemento pai*/
   background: linear-gradient(to bottom, black 0%,
-      rgba(20, 20, 20, 0.788) 10%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%),
-
-    linear-gradient(to right, black 0%,
-      rgba(20, 20, 20, 0.788) 5%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%);
+  rgba(20, 20, 20, 0.788) 10%,
+  rgba(20, 20, 20, 0.5) 15%,
+  transparent 30%,
+  transparent 75%,
+  rgba(20, 20, 20, 0.5) 85%,
+  rgba(20, 20, 20, 0.788) 95%,
+  black 100%),
+  
+  linear-gradient(to right, black 0%,
+  rgba(20, 20, 20, 0.788) 5%,
+  rgba(20, 20, 20, 0.5) 15%,
+  transparent 30%,
+  transparent 75%,
+  rgba(20, 20, 20, 0.5) 85%,
+  rgba(20, 20, 20, 0.788) 95%,
+  black 100%);
 }
 
 
@@ -593,15 +588,15 @@ footer {
   width: 100%;
   height: calc(92dvh - 140px);
   background: linear-gradient(to bottom,
-      black 0%,
-      rgba(20, 20, 20, 0.788) 5%,
-      rgba(20, 20, 20, 0.5) 15%,
-      transparent 30%,
-      transparent 75%,
-      rgba(20, 20, 20, 0.5) 85%,
-      rgba(20, 20, 20, 0.788) 95%,
-      black 100%),
-    url(/public/assets/img/bg/SHACO03.png);
+  black 0%,
+  rgba(20, 20, 20, 0.788) 5%,
+  rgba(20, 20, 20, 0.5) 15%,
+  transparent 30%,
+  transparent 75%,
+  rgba(20, 20, 20, 0.5) 85%,
+  rgba(20, 20, 20, 0.788) 95%,
+  black 100%),
+  url(/public/assets/img/bg/SHACO03.png);
   background-size: cover;
 }
 
@@ -732,7 +727,7 @@ footer {
   text-align: center;
   max-width: 720px;
   margin: 0px auto;
-
+  
   text-align: justify;
 }
 
@@ -759,6 +754,12 @@ footer {
 
 
 
+/* .quadrado {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+} */
+
 /* .container-6 {
   width: 100%;
   height: calc(100dvh - 146px);
@@ -768,17 +769,17 @@ footer {
   background-color: rgb(5, 1, 255);
   background-size: cover;
   filter: sepia(10%);
-}
-
-.container-7 {
-  width: 100%;
-  height: calc(100dvh - 146px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(181, 0, 218);
-  background-size: cover;
-  filter: sepia(10%);
+  }
+  
+  .container-7 {
+    width: 100%;
+    height: calc(100dvh - 146px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(181, 0, 218);
+    background-size: cover;
+    filter: sepia(10%);
 } */
 
 /* 
