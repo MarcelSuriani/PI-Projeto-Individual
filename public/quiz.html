@@ -46,176 +46,176 @@
   </div>
   <div class="quiz-titulo">QUIZ DO CLONE</div>
 
-  <body onload="onloadEsconder()">
     <div id="pontuacaoEJogo">
       <button class="btn" id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+    
 
-      <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-        <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-          <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-          <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+      <div id="pontuacao" class="quiz-pontuacao">
+        <div id="pontuacaoDuranteJogo" class="quiz-pontuacao">
+          <span>Acertos: <span id="spanCertas"></span></span>
+          <span>Erros: <span id="spanErradas"></span></span>
         </div>
-        <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-          <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-            <span id="spanPontuacaoFinal">***</span>
+        <div id="pontuacaoFinalJogo">
+          <span id="pontuacaoFinal">
+            Pontuação Final:
+            <span id="spanPontuacaoFinal"></span>
           </span>
-          <span id="msgFinal" class="width-fit-content">***</span>
+          <span id="msgFinal"></span>
         </div>
       </div>
+    
+      
 
-      <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-        <div id="infoQuestao" class="padding-8">
-          <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-            questões.</span>
+        <div id="jogo" class="quiz-questao">
+          <div id="infoQuestao" class="quiz-numero">
+            <span>Questão <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+          </span>
         </div>
-
-        <div id="perguntaDaQuestaoAtual" class="padding-8">
-          <span id="spanQuestaoExibida" class="text-bold"></span>
+        
+        <div id="perguntaDaQuestaoAtual">
+          <span id="spanQuestaoExibida"></span>
         </div>
-
-        <div id="infoAlternativas" class="padding-8">
-          <span><em>Escolha uma opção dentre as abaixo:</em></span>
+    
+        <div id="infoAlternativas">
         </div>
-
-        <div id="opcoes" class="flex-colunar padding-8">
+    
+        <div id="opcoes" class="quiz-opcoes">
           <span>
             <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-            <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+            <label for="primeiraOpcao" id="labelOpcaoUm"></label>
           </span>
           <span>
             <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-            <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+            <label for="segundaOpcao" id="labelOpcaoDois"></label>
           </span>
           <span>
             <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-            <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+            <label for="terceiraOpcao" id="labelOpcaoTres"></label>
           </span>
           <span>
-            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-            <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+            <input type="radio" id="quartaOpcao" name="option" value="alternativaD" />
+            <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
           </span>
         </div>
-
-        <div id="botoes" class="flex-colunar padding-8">
+    
+        <div id="botoes">
           <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
           <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
           <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
           <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
         </div>
-
       </div>
+    
     </div>
 
-</html>
-<footer>
-  <div>
-    <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
-  </div>
-  <p>© 2026. Todos os direitos reservados.</p>
-</footer>
+    <footer>
+      <div>
+        <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
+      </div>
+      <p>© 2026. Todos os direitos reservados.</p>
+    </footer>
 </body>
 
 </html>
 <script>
   const listaDeQuestoes = [
-  {
-    pergunta: "O que Shaco era antes de ser corrompido pelo caos?",
-    alternativaA: "Um assassino contratado",
-    alternativaB: "Um brinquedo de um príncipe solitário",
-    alternativaC: "Um espírito antigo sem forma",
-    alternativaD: "Um soldado do exército real",
-    alternativaCorreta: "alternativaB"
-  },
-  {
-    pergunta: "Shaco mata por ódio e busca vingança contra quem destruiu sua vida.",
-    alternativaA: "Verdadeiro",
-    alternativaB: "Falso",
-    alternativaC: "",
-    alternativaD: "",
-    alternativaCorreta: "alternativaB"
-  },
-  {
-    pergunta: "Qual é o efeito da passiva do Shaco, Apunhalar?",
-    alternativaA: "Causa dano mágico ao atacar pela frente",
-    alternativaB: "Causa dano adicional ao atingir o inimigo por trás",
-    alternativaC: "Reduz a velocidade do inimigo ao atacar",
-    alternativaD: "Gera escudo ao causar dano crítico",
-    alternativaCorreta: "alternativaB"
-  },
-  {
-    pergunta: "O que acontece quando o clone do Shaco (R) morre?",
-    alternativaA: "Ele explode e cura o Shaco",
-    alternativaB: "Ele some sem causar nenhum efeito",
-    alternativaC: "Ele explode, surgem três Jack in the Box e causa dano aos inimigos próximos",
-    alternativaD: "Ele se transforma no Shaco real",
-    alternativaCorreta: "alternativaC"
-  },
-  {
-    pergunta: "O Q do Shaco causa dano crítico ao atacar pelas costas enquanto invisível.",
-    alternativaA: "Verdadeiro",
-    alternativaB: "Falso",
-    alternativaC: "",
-    alternativaD: "",
-    alternativaCorreta: "alternativaA"
-  },
-  {
-    pergunta: "Qual habilidade do Shaco causa medo nos inimigos?",
-    alternativaA: "Q — Enganar",
-    alternativaB: "W — Jack in the Box",
-    alternativaC: "E — Veneno de Dois Gumes",
-    alternativaD: "R — Alucinações",
-    alternativaCorreta: "alternativaB"
-  },
-  {
-    pergunta: "Qual skin do Shaco é inspirada em Alice no País das Maravilhas?",
-    alternativaA: "Asylum Shaco",
-    alternativaB: "Shacoringa",
-    alternativaC: "Shaco Chapeleiro Maluco",
-    alternativaD: "Goseong",
-    alternativaCorreta: "alternativaC"
-  },
-  {
-    pergunta: "O caos que habita Shaco criou uma consciência humana com emoções e empatia.",
-    alternativaA: "Verdadeiro",
-    alternativaB: "Falso",
-    alternativaC: "",
-    alternativaD: "",
-    alternativaCorreta: "alternativaB"
-  },
-  {
-    pergunta: "Segundo a lore, como Shaco foi criado?",
-    alternativaA: "Ele estava em um campo de batalha destruído",
-    alternativaB: "Foi criado como brinquedo para um príncipe e corrompido pela magia negra",
-    alternativaC: "Surgiu de um ritual de invocação",
-    alternativaD: "Escapou de uma prisão dimensional",
-    alternativaCorreta: "alternativaB"
-  },
-  {
-    pergunta: "Qual habilidade envenena os inimigos passivamente e causa dano extra abaixo de 30% de vida?",
-    alternativaA: "Q — Enganar",
-    alternativaB: "W — Jack in the Box",
-    alternativaC: "E — Veneno de Dois Gumes",
-    alternativaD: "R — Alucinações",
-    alternativaCorreta: "alternativaC"
-  },
-  {
-    pergunta: "Qual detalhe oculto conecta Shaco diretamente ao conceito de caos?",
-    alternativaA: "O sorriso do boneco",
-    alternativaB: "O desaparecimento do príncipe",
-    alternativaC: "O nome ser um anagrama de 'Chaos'",
-    alternativaD: "As adagas envenenadas",
-    alternativaCorreta: "alternativaC"
-  },
-  {
-  pergunta: "O que é o que é? Um palhaço sorridente, vestido de amarelo e vermelho.",
-  alternativaA: "Uma péssima decisão de moda 👎",
-  alternativaB: "Ketchup e mostarda após ganhar consciência 🍅",
-  alternativaC: "O mascote de uma rede de fast-food 🍔",
-  alternativaD: "Shaco McDonald's 👍",
-  alternativaCorreta: "alternativaD"
-}
-]
+    {
+      pergunta: "O que Shaco era antes de ser corrompido pelo caos?",
+      alternativaA: "Um assassino contratado",
+      alternativaB: "Um brinquedo de um príncipe solitário",
+      alternativaC: "Um espírito antigo sem forma",
+      alternativaD: "Um soldado do exército real",
+      alternativaCorreta: "alternativaB"
+    },
+    {
+      pergunta: "Shaco mata por ódio e busca vingança contra quem destruiu sua vida.",
+      alternativaA: "Verdadeiro",
+      alternativaB: "Falso",
+      alternativaC: "",
+      alternativaD: "",
+      alternativaCorreta: "alternativaB"
+    },
+    {
+      pergunta: "Qual é o efeito da passiva do Shaco, Apunhalar?",
+      alternativaA: "Causa dano mágico ao atacar pela frente",
+      alternativaB: "Causa dano adicional ao atingir o inimigo por trás",
+      alternativaC: "Reduz a velocidade do inimigo ao atacar",
+      alternativaD: "Gera escudo ao causar dano crítico",
+      alternativaCorreta: "alternativaB"
+    },
+    {
+      pergunta: "O que acontece quando o clone do Shaco (R) morre?",
+      alternativaA: "Ele explode e cura o Shaco",
+      alternativaB: "Ele some sem causar nenhum efeito",
+      alternativaC: "Ele explode, surgem três Jack in the Box e causa dano aos inimigos próximos",
+      alternativaD: "Ele se transforma no Shaco real",
+      alternativaCorreta: "alternativaC"
+    },
+    {
+      pergunta: "O Q do Shaco causa dano crítico ao atacar pelas costas enquanto invisível.",
+      alternativaA: "Verdadeiro",
+      alternativaB: "Falso",
+      alternativaC: "",
+      alternativaD: "",
+      alternativaCorreta: "alternativaA"
+    },
+    {
+      pergunta: "Qual habilidade do Shaco causa medo nos inimigos?",
+      alternativaA: "Q — Enganar",
+      alternativaB: "W — Jack in the Box",
+      alternativaC: "E — Veneno de Dois Gumes",
+      alternativaD: "R — Alucinações",
+      alternativaCorreta: "alternativaB"
+    },
+    {
+      pergunta: "Qual skin do Shaco é inspirada em Alice no País das Maravilhas?",
+      alternativaA: "Asylum Shaco",
+      alternativaB: "Shacoringa",
+      alternativaC: "Shaco Chapeleiro Maluco",
+      alternativaD: "Goseong",
+      alternativaCorreta: "alternativaC"
+    },
+    {
+      pergunta: "O caos que habita Shaco criou uma consciência humana com emoções e empatia.",
+      alternativaA: "Verdadeiro",
+      alternativaB: "Falso",
+      alternativaC: "",
+      alternativaD: "",
+      alternativaCorreta: "alternativaB"
+    },
+    {
+      pergunta: "Segundo a lore, como Shaco foi criado?",
+      alternativaA: "Ele estava em um campo de batalha destruído",
+      alternativaB: "Foi criado como brinquedo para um príncipe e corrompido pela magia negra",
+      alternativaC: "Surgiu de um ritual de invocação",
+      alternativaD: "Escapou de uma prisão dimensional",
+      alternativaCorreta: "alternativaB"
+    },
+    {
+      pergunta: "Qual habilidade envenena os inimigos passivamente e causa dano extra abaixo de 30% de vida?",
+      alternativaA: "Q — Enganar",
+      alternativaB: "W — Jack in the Box",
+      alternativaC: "E — Veneno de Dois Gumes",
+      alternativaD: "R — Alucinações",
+      alternativaCorreta: "alternativaC"
+    },
+    {
+      pergunta: "Qual detalhe oculto conecta Shaco diretamente ao conceito de caos?",
+      alternativaA: "O sorriso do boneco",
+      alternativaB: "O desaparecimento do príncipe",
+      alternativaC: "O nome ser um anagrama de 'Chaos'",
+      alternativaD: "As adagas envenenadas",
+      alternativaCorreta: "alternativaC"
+    },
+    {
+      pergunta: "O que é o que é? Um palhaço sorridente, vestido de amarelo e vermelho.",
+      alternativaA: "Uma péssima decisão de moda 👎",
+      alternativaB: "Ketchup e mostarda após ganhar consciência 🍅",
+      alternativaC: "O mascote de uma rede de fast-food 🍔",
+      alternativaD: "Shaco McDonald's 👍",
+      alternativaCorreta: "alternativaD"
+    }
+  ]
   // variáveis globais    
   let numeroDaQuestaoAtual = 0
   let pontuacaoFinal = 0
@@ -374,22 +374,23 @@
     let classComCoresParaMensagemFinal = null
     const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
-    if (porcentagemFinalDeAcertos < 0.25) {
-      textoParaMensagemFinal = "🤡 Vítima da Pegadinha<br>Eu até diria que você foi bem mas ai estariamos os dois errados"
+    if (porcentagemFinalDeAcertos <= 0.25) {
+      textoParaMensagemFinal = "<br>🤡 Vítima da Pegadinha<br>Eu até diria que você foi bem mas ai estariamos os dois errados"
       classComCoresParaMensagemFinal = "text-danger-with-bg"
     } else if (porcentagemFinalDeAcertos <= 0.4) {
-      textoParaMensagemFinal = "🎭 Clone Suspeito<br>Por um momento achei que você sabia. Foi uma ilusão."
+      textoParaMensagemFinal = "<br>🎭 Clone Suspeito<br>Por um momento achei que você sabia. Foi uma ilusão."
       classComCoresParaMensagemFinal = "text-warning-with-bg"
     } else if (porcentagemFinalDeAcertos <= 0.6) {
-      textoParaMensagemFinal = "🎪 Aprendiz do Caos <br> Nem tudo que brilha é ouro. Nem toda resposta marcada estava certa."
+      textoParaMensagemFinal = "<br>🎪 Aprendiz do Caos <br> Nem tudo que brilha é ouro. Nem toda resposta marcada estava certa."
       classComCoresParaMensagemFinal = "text-warning-with-bg"
     } else if (porcentagemFinalDeAcertos <= 0.8) {
-      textoParaMensagemFinal = "🗡️ Mestre das Ilusões <br> Poucos chegam tão longe sem explodir uma caixa surpresa."
+      textoParaMensagemFinal = "<br>🗡️ Mestre das Ilusões <br> Poucos chegam tão longe sem explodir uma caixa surpresa."
       classComCoresParaMensagemFinal = "text-warning-with-bg"
     } else if (porcentagemFinalDeAcertos <= 0.9) {
-      textoParaMensagemFinal = "🎭 Caçador de clones <br> Nem os clones conseguiram te enganar. "
+      textoParaMensagemFinal = "<br>🎭 Caçador de clones <br> Nem os clones conseguiram te enganar. "
       classComCoresParaMensagemFinal = "text-warning-with-bg"
-    } else { textoParaMensagemFinal = "👁️ Imune a ilusões <br> Resultado perfeito. Suspeitamente perfeito...Os clones estão pedindo revisão do resultado "
+    } else {
+      textoParaMensagemFinal = "<br>👁️ Imune a ilusões <br> Resultado perfeito. Suspeitamente perfeito...Os clones estão pedindo revisão do resultado "
       classComCoresParaMensagemFinal = "text-warning-with-bg"
     }
     textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
