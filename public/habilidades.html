@@ -335,11 +335,11 @@
 
       <div class="favorito-form">
       <div class="favorito-container">
-        <p class="favorito-texto">Qual sua skin favorita do Shaco?</p>
+        <p class="favorito-texto">Qual sua skill favorita do Shaco?</p>
       </div>
       <div class="favorito-container">
-        <select class="favorito-select" name="iptSkillFav">
-          <option value="#">Selecione uma habilidade</option>
+        <select id="iptHabilidadeFav" class="favorito-select">
+          <option value="">Selecione uma habilidade</option>
           <option value="p">P — Apunhalar</option>
           <option value="q">Q — Enganar</option>
           <option value="w">W — Jack in the Box</option>
@@ -352,7 +352,7 @@
         <p class="favorito-texto">Qual sua skin favorita do Shaco?</p>
       </div>
       <div class="favorito-container">
-        <select class="favorito-select" name="iptSkinFav">
+        <select id="iptSkinFav" class="favorito-select">
           <option value="">Selecione uma skin</option>
           <option value="01">Shaco Classico</option>
           <option value="02">Shaco Chapeleiro Maluco</option>
@@ -375,7 +375,7 @@
         </select>
       </div>
 
-      <button class="btn" type="submit">Enviar</button>
+      <button class="btn" onclick="enviar()" type="submit">Enviar</button>
 </div>
     </div>
     <!-- <video class="skin-video" autoplay muted loop playsinline src="/public/assets/img/shaco_chapeleiro_maluco (4).mp4"></video> -->
@@ -387,5 +387,22 @@
     <p>© 2026. Todos os direitos reservados.</p>
   </footer>
 </body>
-
 </html>
+<script>
+  function enviar(){
+    let habilidade = iptHabilidadeFav.value
+    let skin = iptSkinFav.value
+    let idUsuario = sessionStorage.ID_USUARIO;
+
+    if (habilidade == "" || skin == "") {
+        alert("Selecione uma habilidade e uma skin.");
+        return;
+    }
+
+     if (!idUsuario) {
+        alert("Você precisa estar logado para enviar suas preferências.");
+        window.location = "login.html";
+        return;
+    }
+  }
+</script>

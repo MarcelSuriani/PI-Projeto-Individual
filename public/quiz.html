@@ -231,6 +231,14 @@
   }
 
   function iniciarQuiz() {
+    let idUsuario = sessionStorage.ID_USUARIO;
+
+    if (!idUsuario) {
+        alert("Você precisa estar logado para enviar suas preferências.");
+        window.location = "login.html";
+        return;
+    }
+
     document.getElementById('pontuacao').style.display = "flex"
     document.getElementById('jogo').style.display = "flex"
     document.getElementById('btnIniciarQuiz').style.display = "none"
