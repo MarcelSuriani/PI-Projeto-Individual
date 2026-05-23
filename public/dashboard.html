@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz</title>
+  <title>Dashboard</title>
 
-  <link rel="stylesheet" href="style-quiz.css">
+  <link rel="stylesheet" href="style-dashboard.css">
   <link rel="icon" href="assets/img/fav-icon.png" type="image/png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -37,16 +39,71 @@
     </nav>
   </header>
 
-  <div class="container-8">
-    <div class="hero" >
-      <video autoplay muted loop playsinline>
-        <source class="mp4" src="/public/assets/img/bg/BG-QUIZ.mp4" type="video/mp4">
-      </video>
+
+  <div class="container-dash">
+    <div class="dash-titulo">DASHBOARD</div>
+
+    <div class="dash-grid">
+
+      <!-- Linha 1 — 4 cards -->
+      <div class="dash-row-4">
+        <div class="card">
+          <div class="titulo">Taxa média de acerto</div>
+          <div class="kpi-kpi">66%</div>
+          <div class="kpi-ancoragem">8 de 12 questões</div>
+        </div>
+        <div class="card">
+          <div class="titulo">Quizzes feitos</div>
+          <div class="kpi-kpi">14</div>
+          <div class="kpi-ancoragem">+3 essa semana</div>
+        </div>
+        <div class="card">
+          <div class="titulo">Melhor pontuação</div>
+          <div class="kpi-kpi">12/12</div>
+          <div class="kpi-ancoragem">100% de acerto</div>
+        </div>
+        <div class="card">
+          <div class="titulo">Habilidade favorita</div>
+          <div class="kpi-kpi">Nome da habilidade</div>
+          <div class="kpi-ancoragem">Antes era:</div>
+        </div>
+      </div>
+
+         <!-- Linha 2 — 2 cards -->
+      <div class="dash-row-3">
+        <div class="card">
+          <div class="titulo">MESTRE DOS CLONES</div>
+          <div class="dash-chart">
+            <canvas id="rankingAcertos"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="titulo">RANKING SKINS</div>
+          <div class="dash-chart">
+            <canvas id="rankingSkins"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="titulo">RANKING HABILIDADES</div>
+            <div class="dash-chart">
+            <canvas id="rankingHabilidades"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha 3 — 1 card -->
+      <div class="dash-row-1">
+        <div class="card">
+          <div class="titulo">ACERTO POR PERGUNTA - QUIZ</div>
+          <div class="dash-chart">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="quiz-titulo">DASHBOARD</div>
 
-  
   <footer>
     <div>
       <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
@@ -58,4 +115,100 @@
 </html>
 <script>
 
+  const ctx1 = document.getElementById('rankingAcertos');
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['01', '02', '03', '04', '05'],
+      datasets: [{
+        label: 'Acertos por questão',
+        data: [2, 3, 3, 5, 2],
+        backgroundColor: 'rgb(134, 130, 111)',
+        borderColor: 'rgba(114, 114, 114, 0.45)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const ctx2 = document.getElementById('rankingSkins');
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['01', '02', '03', '04', '05'],
+      datasets: [{
+        label: 'Acertos por questão',
+        data: [2, 3, 3, 5, 2],
+        backgroundColor: 'rgb(134, 130, 111)',
+        borderColor: 'rgba(114, 114, 114, 0.45)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const ctx3 = document.getElementById('rankingHabilidades');
+  new Chart(ctx3, {
+    type: 'bar',
+    data: {
+      labels: ['01', '02', '03', '04', '05'],
+      datasets: [{
+        label: 'Acertos por questão',
+        data: [2, 3, 3, 5, 2],
+        backgroundColor: 'rgb(134, 130, 111)',
+        borderColor: 'rgba(114, 114, 114, 0.45)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  
+  const ctx4 = document.getElementById('myChart');
+  new Chart(ctx4, {
+    type: 'bar',
+    data: {
+      labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+      datasets: [{
+        label: 'Acertos por questão',
+        data: [12, 19, 3, 5, 2, 3,2,4,6,3,6,7],
+        backgroundColor: 'rgb(134, 130, 111)',
+        borderColor: 'rgba(114, 114, 114, 0.45)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 </script>
+ 
