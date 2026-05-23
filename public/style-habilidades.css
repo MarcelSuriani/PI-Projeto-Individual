@@ -1,0 +1,429 @@
+/* fonte personalizada */
+@font-face {
+  font-family: Tommy-B;
+  src: url(/public/assets/font/Tommy/Tommy-bold.otf) format('opentype');
+  font-style: bold;
+}
+
+@font-face {
+  font-family: Tommy-l;
+  src: url(/public/assets/font/Tommy/Tommy-light.otf) format('opentype');
+  font-style: light;
+}
+
+@font-face {
+  font-family: Tommy-m;
+  src: url(/public/assets/font/Tommy/Tommy-medium.otf) format('opentype');
+  font-style: medium;
+}
+
+@font-face {
+  font-family: Tommy-r;
+  src: url(/public/assets/font/Tommy/Tommy-regular.otf) format('opentype');
+  font-style: regular;
+}
+
+@font-face {
+  font-family: Tommy-t;
+  src: url(/public/assets/font/Tommy/Tommy-thin.otf) format('opentype');
+  font-style: thin;
+}
+
+@font-face {
+  font-family: CrazyKiller;
+  src: url(/public/assets/font/Crazy-Killer/Crazy-Killer.TTF) format('truetype');
+  text-decoration: none;
+
+}
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.cinzel {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* reset na pagina */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Tommy-l";
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+header {
+  width: 100%;
+  display: flex;
+  padding: 0 2%;
+  justify-content: space-between;
+  /*tipo de espaçamento*/
+  background-color: rgb(20, 20, 20);
+  height: 70px;
+  align-items: center;
+  /* alinhar itens entre eles no eixo vertical*/
+  position: top;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de baixo */
+  z-index: 50;
+
+  ul {
+    display: flex;
+    gap: 35px;
+    list-style-type: none;
+    backdrop-filter: blur(20px);
+    font-size: 12px;
+  }
+
+  a {
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: rgb(190, 180, 136);
+    font-weight: bold;
+    transition: 0.5s;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+
+
+
+
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      /*Ajuste para não distorcer*/
+      cursor: pointer;
+    }
+  }
+
+  .logoNav {
+    height: 60px;
+  }
+
+  span:hover {
+    color: rgb(193, 104, 118);
+    transform: scale(1.05);
+    cursor: pointer;
+
+  }
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 2%;
+  justify-content: center;
+  /* alinhamento vertical pq o flex ta column*/
+  background-color: rgb(20, 20, 20);
+  height: 70px;
+  align-items: center;
+  /* alinhar na horizontal*/
+  position: static;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-top: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de cima */
+
+  p {
+    color: rgba(190, 180, 136, 0.685);
+    font-size: thin;
+    font-size: 14px;
+  }
+
+  .logoM {
+    height: 35px;
+    opacity: 0.2;
+    filter: invert(100%);
+  }
+}
+
+.active {
+  color: rgb(193, 104, 118);
+
+  a {
+    color: rgb(193, 104, 118);
+  }
+
+  img {
+    filter:
+      brightness(0) saturate(100%) invert(56%) sepia(18%) saturate(1178%) hue-rotate(304deg) brightness(90%) contrast(88%);
+  }
+}
+
+/*HERO HABILIDADES E SKINS*/
+.container-5 {
+  width: 100%;
+  height: calc(92dvh - 140px);
+  background: linear-gradient(to bottom,
+  black 0%,
+  rgba(20, 20, 20, 0.788) 5%,
+  rgba(20, 20, 20, 0.5) 15%,
+  transparent 30%,
+  transparent 75%,
+  rgba(20, 20, 20, 0.5) 85%,
+  rgba(20, 20, 20, 0.788) 95%,
+  black 100%),
+  url(/public/assets/img/bg/SHACO03.png);
+  background-size: cover;
+}
+
+.skill-skin-titulo {
+  text-align: center;
+  font-family: CrazyKiller;
+  width: 100%;
+  font-size: 50px;
+  letter-spacing: 5px;
+  color: rgb(134, 130, 111);
+  padding: 60px;
+}
+
+/*HABILIDADES*/
+.container-6 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0px 35px;
+}
+
+.skill-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 0px 20px;
+  width: 20%;
+  min-width: 360px;
+  box-sizing: border-box;
+}
+
+.skill-video {
+  width: 100%;
+  max-height: 360px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(190, 180, 136);
+}
+
+.skill-descricao {
+  font-size: 14px;
+  color: rgb(199, 196, 185);
+  line-height: 150%;
+  margin: 0px;
+  width: 90%;
+  text-align: justify
+}
+
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.skill-icone {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 0.5px solid rgba(135, 133, 120, 0.615);
+}
+
+.skill-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-nome {
+  font-size: 24px;
+  margin: 0px;
+  color: rgb(190, 180, 136);
+}
+
+.skill-key {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: rgb(190, 180, 136);
+  color: #202020;
+  border: 1px solid rgba(190, 180, 136);
+  letter-spacing: 2px;
+}
+
+/*Skins*/
+.container-7 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+
+.skin-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: start;
+  margin: 0px 0px;
+  padding: 50px 35px;
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+}
+
+.skin-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+.skill-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 0px 20px;
+  width: 20%;
+  min-width: 360px;
+  box-sizing: border-box;
+}
+
+.skin-nome {
+  font-size: 24px;
+  margin: 0px;
+  color: rgb(190, 180, 136);
+}
+
+.skin-descricao {
+  font-size: 14px;
+  color: rgb(199, 196, 185);
+  line-height: 150%;
+  margin: 0px auto;
+  text-align: center;
+  max-width: 720px;
+  margin: 0px auto;
+  
+  text-align: justify;
+}
+
+.skin-video {
+  max-width: 480px;
+  object-fit: cover;
+  flex-shrink: 0;}
+
+  
+  .skin-splash {
+    max-width: 720px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(190, 180, 136);
+    border-radius: 10px;
+    margin-left: 20px;
+  }
+  
+  .skin-splash {
+    width: 100%;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+
+  .favorito-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 0% 25%;
+}
+
+.favorito-texto {
+  font-size: 14px;
+  color: rgb(190, 180, 136);
+  line-height: 150%;
+}
+
+
+.btn {
+  display: block;
+  height: 40px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgb(199, 196, 185);
+  font-family: tommy-r;
+  color: #202020;
+  border: none;
+  transition: 0.5s;
+  margin:auto;
+  margin-bottom: 50px;
+}
+
+.btn:hover {
+  background-color: rgb(190, 180, 136);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.favorito-select {
+  width: 100%;
+  padding: 10px 18px;
+  border: 1px solid rgb(199, 196, 185);
+  border-radius: 10px;
+  background: transparent;
+  color: rgb(199,196,185);
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.favorito-select:focus {
+  outline: none;
+  border-color: rgb(199, 196, 185);
+}
+
+.favorito-select option {
+  background: #202020;
+  color: rgb(199, 196, 185);
+}
+  
+  /* model-viewer{
+    height: 480px;
+  } */
+
+/* .quadrado {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+} */
+
+
+/* 
+titulo #a3a3a3 
+descricao rgb(199, 196, 185);
+header rgb(190, 180, 136);
+*/

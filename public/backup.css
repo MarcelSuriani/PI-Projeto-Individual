@@ -770,6 +770,65 @@ footer {
     margin-right: 20px;
   }
   
+
+  .favorito-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 0% 25%;
+}
+
+.favorito-texto {
+  font-size: 14px;
+  color: rgb(190, 180, 136);
+  line-height: 150%;
+}
+
+
+.btn {
+  display: block;
+  height: 40px;
+  width: 250px;
+  border-radius: 10px;
+  background-color: rgb(199, 196, 185);
+  font-family: tommy-r;
+  color: #202020;
+  border: none;
+  transition: 0.5s;
+  margin:auto;
+  margin-bottom: 50px;
+}
+
+.btn:hover {
+  background-color: rgb(190, 180, 136);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.favorito-select {
+  width: 100%;
+  padding: 10px 18px;
+  border: 1px solid rgb(199, 196, 185);
+  border-radius: 10px;
+  background: transparent;
+  color: rgb(199,196,185);
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 50px;
+}
+
+.favorito-select:focus {
+  outline: none;
+  border-color: rgb(199, 196, 185);
+}
+
+.favorito-select option {
+  background: #202020;
+  color: rgb(199, 196, 185);
+}
   
   /* model-viewer{
     height: 480px;

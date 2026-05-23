@@ -1,0 +1,274 @@
+/* fonte personalizada */
+@font-face {
+  font-family: Tommy-B;
+  src: url(/public/assets/font/Tommy/Tommy-bold.otf) format('opentype');
+  font-style: bold;
+}
+
+@font-face {
+  font-family: Tommy-l;
+  src: url(/public/assets/font/Tommy/Tommy-light.otf) format('opentype');
+  font-style: light;
+}
+
+@font-face {
+  font-family: Tommy-m;
+  src: url(/public/assets/font/Tommy/Tommy-medium.otf) format('opentype');
+  font-style: medium;
+}
+
+@font-face {
+  font-family: Tommy-r;
+  src: url(/public/assets/font/Tommy/Tommy-regular.otf) format('opentype');
+  font-style: regular;
+}
+
+@font-face {
+  font-family: Tommy-t;
+  src: url(/public/assets/font/Tommy/Tommy-thin.otf) format('opentype');
+  font-style: thin;
+}
+
+@font-face {
+  font-family: CrazyKiller;
+  src: url(/public/assets/font/Crazy-Killer/Crazy-Killer.TTF) format('truetype');
+  text-decoration: none;
+
+}
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.cinzel {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* reset na pagina */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Tommy-l";
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+header {
+  width: 100%;
+  display: flex;
+  padding: 0 2%;
+  justify-content: space-between;
+  /*tipo de espaçamento*/
+  background-color: rgb(20, 20, 20);
+  height: 70px;
+  align-items: center;
+  /* alinhar itens entre eles no eixo vertical*/
+  position: top;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-bottom: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de baixo */
+  z-index: 50;
+
+  ul {
+    display: flex;
+    gap: 35px;
+    list-style-type: none;
+    backdrop-filter: blur(20px);
+    font-size: 12px;
+  }
+
+  a {
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: rgb(190, 180, 136);
+    font-weight: bold;
+    transition: 0.5s;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+
+
+
+
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      /*Ajuste para não distorcer*/
+      cursor: pointer;
+    }
+  }
+
+  .logoNav {
+    height: 60px;
+  }
+
+  span:hover {
+    color: rgb(193, 104, 118);
+    transform: scale(1.05);
+    cursor: pointer;
+
+  }
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  padding: 2%;
+  justify-content: center;
+  /* alinhamento vertical pq o flex ta column*/
+  background-color: rgb(20, 20, 20);
+  height: 70px;
+  align-items: center;
+  /* alinhar na horizontal*/
+  position: static;
+  /* se deixar fixo o bg do hero fica atras*/
+  border-top: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem de cima */
+
+  p {
+    color: rgba(190, 180, 136, 0.685);
+    font-size: thin;
+    font-size: 14px;
+  }
+
+  .logoM {
+    height: 35px;
+    opacity: 0.2;
+    filter: invert(100%);
+  }
+}
+
+.active {
+  color: rgb(193, 104, 118);
+
+  a {
+    color: rgb(193, 104, 118);
+  }
+
+  img {
+    filter:
+      brightness(0) saturate(100%) invert(56%) sepia(18%) saturate(1178%) hue-rotate(304deg) brightness(90%) contrast(88%);
+  }
+}
+
+/* login */
+.container-2 {
+  width: 100%;
+  height: calc(100dvh - 146px);
+  display: flex;
+  background-image: url(/public/assets/img/bg/desenho.png);
+  background-size: cover;
+  filter: sepia(10%);
+}
+
+.login-card {
+  width: 25%;
+  height: 100%;
+  background-color: rgba(190, 180, 136, 0.65);
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(114, 114, 114, 0.45);
+  /*Espessura e cor da margem direita */
+
+  display: flex;
+  flex-direction: column;
+  /*direção*/
+  justify-content: center;
+  /*Primeiro eixo*/
+  padding: 80px;
+  /*pra desgrudar da borda*/
+  gap: 5px;
+
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  input {
+    border-style: none;
+    border-radius: 10px;
+    background-color: #ffffff69;
+    backdrop-filter: blur(10);
+    padding: 5%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  input:focus {
+    outline: none;
+    border: none;
+    background-color: #ffffff69;
+  }
+
+  label {
+    font-family: tommy-b;
+  }
+
+  button {
+    margin-top: 30px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(10);
+    padding: 5%;
+    transition: 0.5s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-family: tommy-r;
+    letter-spacing: 3px;
+
+  }
+
+  button:hover {
+    background-color: rgb(193, 104, 118);
+    cursor: pointer;
+
+  }
+
+  a {
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: 0.5s;
+  }
+
+  a:hover {
+    color: rgb(193, 104, 118);
+    cursor: pointer;
+  }
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+
+
+  img {
+    width: 300px;
+    filter: invert();
+    justify-self: center;
+  }
+}
+
+.login-bg {
+  width: 70%;
+  height: 100%;
+}
+
