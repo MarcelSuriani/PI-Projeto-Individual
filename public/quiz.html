@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body onload="onloadEsconder()">
   <header>
     <a href="/public/index.html">
       <img class="logoNav" src="assets/img/fav-icon.png" alt="Logo site">
@@ -38,7 +38,7 @@
   </header>
 
   <div class="container-8">
-    <div class="hero" >
+    <div class="hero">
       <video autoplay muted loop playsinline>
         <source class="mp4" src="/public/assets/img/bg/BG-QUIZ.mp4" type="video/mp4">
       </video>
@@ -46,397 +46,364 @@
   </div>
   <div class="quiz-titulo">QUIZ DO CLONE</div>
 
-  <form>
+  <body onload="onloadEsconder()">
+    <div id="pontuacaoEJogo">
+      <button class="btn" id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-    <div class="quiz-container">
-      <span class="quiz-numero">01</span>
-      <p class="quiz-texto">O que Shaco era antes de ser corrompido pelo caos?</p>
+      <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+        <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+          <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+          <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+        </div>
+        <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+          <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+            <span id="spanPontuacaoFinal">***</span>
+          </span>
+          <span id="msgFinal" class="width-fit-content">***</span>
+        </div>
+      </div>
+
+      <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+
+        <div id="infoQuestao" class="padding-8">
+          <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+            questões.</span>
+        </div>
+
+        <div id="perguntaDaQuestaoAtual" class="padding-8">
+          <span id="spanQuestaoExibida" class="text-bold"></span>
+        </div>
+
+        <div id="infoAlternativas" class="padding-8">
+          <span><em>Escolha uma opção dentre as abaixo:</em></span>
+        </div>
+
+        <div id="opcoes" class="flex-colunar padding-8">
+          <span>
+            <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+            <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+          </span>
+          <span>
+            <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+            <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+          </span>
+          <span>
+            <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+            <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+          </span>
+          <span>
+            <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+            <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+          </span>
+        </div>
+
+        <div id="botoes" class="flex-colunar padding-8">
+          <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+          <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+          <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+          <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+        </div>
+
+      </div>
     </div>
 
-    <div class="quiz-opcoes">
-      <label class="quiz-opcao">
-        <span class="quiz-letra">A</span>
-        <input type="radio" name="iptQuizUm" value="a">
-        <span class="quiz-resposta">Um assassino contratado</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">B</span>
-        <input type="radio" name="iptQuizUm" value="b">
-        <span class="quiz-resposta">Um brinquedo de um príncipe solitário</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">C</span>
-        <input type="radio" name="iptQuizUm" value="c">
-        <span class="quiz-resposta">Um espírito antigo sem forma</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">D</span>
-        <input type="radio" name="iptQuizUm" value="d">
-        <span class="quiz-resposta">Um soldado do exército real</span>
-      </label>
-    </div>
-
-    <div class="quiz-container">
-      <span class="quiz-numero">02</span>
-      <p class="quiz-texto">Shaco mata por ódio e busca vingança contra quem destruiu sua vida.</p>
-    </div>
-    <div class="quiz-opcoes">
-      <label class="quiz-opcao">
-        <span class="quiz-letra">A</span>
-        <input type="radio" name="iptQuizDois" value="verdadeiro">
-        <span class="quiz-resposta">Verdadeiro</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">B</span>
-        <input type="radio" name="iptQuizDois" value="falso">
-        <span class="quiz-resposta">Falso</span>
-      </label>
-    </div>
-
-    
-  <form>
-
-    <div class="quiz-container">
-      <span class="quiz-numero">01</span>
-      <p class="quiz-texto">O que Shaco era antes de ser corrompido pelo caos?</p>
-    </div>
-
-    <div class="quiz-opcoes">
-      <label class="quiz-opcao">
-        <span class="quiz-letra">A</span>
-        <input type="radio" name="iptQuizUm" value="a">
-        <span class="quiz-resposta">Um assassino contratado</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">B</span>
-        <input type="radio" name="iptQuizUm" value="b">
-        <span class="quiz-resposta">Um brinquedo de um príncipe solitário</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">C</span>
-        <input type="radio" name="iptQuizUm" value="c">
-        <span class="quiz-resposta">Um espírito antigo sem forma</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">D</span>
-        <input type="radio" name="iptQuizUm" value="d">
-        <span class="quiz-resposta">Um soldado do exército real</span>
-      </label>
-    </div>
-
-    <div class="quiz-container">
-      <span class="quiz-numero">02</span>
-      <p class="quiz-texto">Shaco mata por ódio e busca vingança contra quem destruiu sua vida.</p>
-    </div>
-    <div class="quiz-opcoes">
-      <label class="quiz-opcao">
-        <span class="quiz-letra">A</span>
-        <input type="radio" name="iptQuizDois" value="verdadeiro">
-        <span class="quiz-resposta">Verdadeiro</span>
-      </label>
-      <label class="quiz-opcao">
-        <span class="quiz-letra">B</span>
-        <input type="radio" name="iptQuizDois" value="falso">
-        <span class="quiz-resposta">Falso</span>
-      </label>
-    </div>
-
-
-  <div class="quiz-container">
-    <span class="quiz-numero">03</span>
-    <p class="quiz-texto">Qual é o efeito da passiva do Shaco, Apunhalar?</p>
+</html>
+<footer>
+  <div>
+    <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
   </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizTres" value="a">
-      <span class="quiz-resposta">Causa dano mágico ao atacar pela frente</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizTres" value="b">
-      <span class="quiz-resposta">Causa dano adicional ao atingir o inimigo por trás</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizTres" value="c">
-      <span class="quiz-resposta">Reduz a velocidade do inimigo ao atacar</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizTres" value="d">
-      <span class="quiz-resposta">Gera escudo ao causar dano crítico</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">04</span>
-    <p class="quiz-texto">O que acontece quando o clone do Shaco (R) morre?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizQuatro" value="a">
-      <span class="quiz-resposta">Ele explode e cura o Shaco</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizQuatro" value="b">
-      <span class="quiz-resposta">Ele some sem causar nenhum efeito</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizQuatro" value="c">
-      <span class="quiz-resposta">Ele explode, surgem três Jack in the Box e causa dano aos inimigos próximos</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizQuatro" value="d">
-      <span class="quiz-resposta">Ele se transforma no Shaco real</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">05</span>
-    <p class="quiz-texto">O Q do Shaco causa dano crítico ao atacar pelas costas enquanto invisível.</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizCinco" value="verdadeiro">
-      <span class="quiz-resposta">Verdadeiro</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizCinco" value="falso">
-      <span class="quiz-resposta">Falso</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">06</span>
-    <p class="quiz-texto">Qual habilidade do Shaco causa medo nos inimigos?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizSeis" value="a">
-      <span class="quiz-resposta">Q — Enganar</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizSeis" value="c">
-      <span class="quiz-resposta">W — Jack in the Box</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizSeis" value="b">
-      <span class="quiz-resposta">E — Veneno de Dois Gumes</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizSeis" value="d">
-      <span class="quiz-resposta">R — Alucinações</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">07</span>
-    <p class="quiz-texto">Qual skin do Shaco é inspirada em Alice no País das Maravilhas?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizSete" value="a">
-      <span class="quiz-resposta">Asylum Shaco</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizSete" value="b">
-      <span class="quiz-resposta">Shacoringa</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizSete" value="c">
-      <span class="quiz-resposta">Shaco Chapeleiro Maluco</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizSete" value="d">
-      <span class="quiz-resposta">Goseong</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">08</span>
-    <p class="quiz-texto">O caos que habita Shaco criou uma consciência humana com emoções e empatia.</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizOito" value="verdadeiro">
-      <span class="quiz-resposta">Verdadeiro</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizOito" value="falso">
-      <span class="quiz-resposta">Falso</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">09</span>
-    <p class="quiz-texto">Segundo a lore, como Shaco foi criado?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizNove" value="a">
-      <span class="quiz-resposta">Ele estava em um campo de batalha destruído</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizNove" value="b">
-      <span class="quiz-resposta">Foi criado como brinquedo para um príncipe e corrompido pela magia negra</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizNove" value="c">
-      <span class="quiz-resposta">Surgiu de um ritual de invocação</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizNove" value="d">
-      <span class="quiz-resposta">Escapou de uma prisão dimensional</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">10</span>
-    <p class="quiz-texto">Qual habilidade envenena os inimigos passivamente e causa dano extra abaixo de 30% de vida?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizDez" value="a">
-      <span class="quiz-resposta">W — Jack in the Box</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizDez" value="b">
-      <span class="quiz-resposta">Q — Enganar</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizDez" value="c">
-      <span class="quiz-resposta">R — Alucinações</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizDez" value="d">
-      <span class="quiz-resposta">E — Veneno de Dois Gumes</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">11</span>
-    <p class="quiz-texto">Você já conhecia esse personagem?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizOnze" value="a">
-      <span class="quiz-resposta">Sim</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizOnze" value="b">
-      <span class="quiz-resposta">Não</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">12</span>
-    <p class="quiz-texto">Qual detalhe oculto conecta Shaco diretamente ao conceito de caos?</p>
-  </div>
-  <div class="quiz-opcoes">
-    <label class="quiz-opcao">
-      <span class="quiz-letra">A</span>
-      <input type="radio" name="iptQuizDoze" value="a">
-      <span class="quiz-resposta">O sorriso do boneco</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">B</span>
-      <input type="radio" name="iptQuizDoze" value="b">
-      <span class="quiz-resposta">O desaparecimento do príncipe</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">C</span>
-      <input type="radio" name="iptQuizDoze" value="c">
-      <span class="quiz-resposta">O nome ser um anagrama de 'Chaos'</span>
-    </label>
-    <label class="quiz-opcao">
-      <span class="quiz-letra">D</span>
-      <input type="radio" name="iptQuizDoze" value="d">
-      <span class="quiz-resposta">As adagas envenenadas</span>
-    </label>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">13</span>
-    <p class="quiz-texto">Qual sua habilidade favorita do Shaco?</p>
-  </div>
-  <div class="quiz-container">
-    <select class="quiz-select" name="iptQuizTreze">
-      <option value="#">Selecione uma habilidade</option>
-      <option value="p">P — Apunhalar</option>
-      <option value="q">Q — Enganar</option>
-      <option value="w">W — Jack in the Box</option>
-      <option value="e">E — Veneno de Dois Gumes</option>
-      <option value="r">R — Alucinações</option>
-    </select>
-  </div>
-
-  <div class="quiz-container">
-    <span class="quiz-numero">14</span>
-    <p class="quiz-texto">Qual sua skin favorita do Shaco?</p>
-  </div>
-  <div class="quiz-container">
-    <select class="quiz-select" name="iptQuizQuatorze">
-      <option value="">Selecione uma skin</option>
-      <option value="01">Shaco Classico</option>
-      <option value="02">Shaco Chapeleiro Maluco</option>
-      <option value="03">Shaco Bobo da corte</option>
-      <option value="04">Shaco Quebra-Nozes</option>
-      <option value="05">Shaco de Brinquedo</option>
-      <option value="06">Shaco do Manicômio</option>
-      <option value="07">Shaco Goseong</option>
-      <option value="08">Shacoringa</option>
-      <option value="09">Shaco Estrela Negra</option>
-      <option value="10">Shaco Arcanista</option>
-      <option value="11">Shaco Pesadelo na cidade do crime</option>
-      <option value="12">Shaco Benção do inverno</option>
-      <option value="13">Shaco Soul Fighter</option>
-      <option value="14">Shaco Soul Fighter de prestigio</option>
-      <option value="15">Shaco Noite apavorante</option>
-      <option value="16">Shaco Gatinho-Surpresa</option>
-      <option value="17">Shaco Pandemonio de prestigio</option>
-      <option value="18">Shaco McDonalds</option>
-    </select>
-  </div>
-
-  <button class="btn" type="submit">Enviar</button>
-  
-  </form>
-  <footer>
-    <div>
-      <img class="logoM" src="/public/assets/img/logo-Marcel.png" alt="">
-    </div>
-    <p>© 2026. Todos os direitos reservados.</p>
-  </footer>
+  <p>© 2026. Todos os direitos reservados.</p>
+</footer>
 </body>
 
 </html>
 <script>
+  const listaDeQuestoes = [
+  {
+    pergunta: "O que Shaco era antes de ser corrompido pelo caos?",
+    alternativaA: "Um assassino contratado",
+    alternativaB: "Um brinquedo de um príncipe solitário",
+    alternativaC: "Um espírito antigo sem forma",
+    alternativaD: "Um soldado do exército real",
+    alternativaCorreta: "alternativaB"
+  },
+  {
+    pergunta: "Shaco mata por ódio e busca vingança contra quem destruiu sua vida.",
+    alternativaA: "Verdadeiro",
+    alternativaB: "Falso",
+    alternativaC: "",
+    alternativaD: "",
+    alternativaCorreta: "alternativaB"
+  },
+  {
+    pergunta: "Qual é o efeito da passiva do Shaco, Apunhalar?",
+    alternativaA: "Causa dano mágico ao atacar pela frente",
+    alternativaB: "Causa dano adicional ao atingir o inimigo por trás",
+    alternativaC: "Reduz a velocidade do inimigo ao atacar",
+    alternativaD: "Gera escudo ao causar dano crítico",
+    alternativaCorreta: "alternativaB"
+  },
+  {
+    pergunta: "O que acontece quando o clone do Shaco (R) morre?",
+    alternativaA: "Ele explode e cura o Shaco",
+    alternativaB: "Ele some sem causar nenhum efeito",
+    alternativaC: "Ele explode, surgem três Jack in the Box e causa dano aos inimigos próximos",
+    alternativaD: "Ele se transforma no Shaco real",
+    alternativaCorreta: "alternativaC"
+  },
+  {
+    pergunta: "O Q do Shaco causa dano crítico ao atacar pelas costas enquanto invisível.",
+    alternativaA: "Verdadeiro",
+    alternativaB: "Falso",
+    alternativaC: "",
+    alternativaD: "",
+    alternativaCorreta: "alternativaA"
+  },
+  {
+    pergunta: "Qual habilidade do Shaco causa medo nos inimigos?",
+    alternativaA: "Q — Enganar",
+    alternativaB: "W — Jack in the Box",
+    alternativaC: "E — Veneno de Dois Gumes",
+    alternativaD: "R — Alucinações",
+    alternativaCorreta: "alternativaB"
+  },
+  {
+    pergunta: "Qual skin do Shaco é inspirada em Alice no País das Maravilhas?",
+    alternativaA: "Asylum Shaco",
+    alternativaB: "Shacoringa",
+    alternativaC: "Shaco Chapeleiro Maluco",
+    alternativaD: "Goseong",
+    alternativaCorreta: "alternativaC"
+  },
+  {
+    pergunta: "O caos que habita Shaco criou uma consciência humana com emoções e empatia.",
+    alternativaA: "Verdadeiro",
+    alternativaB: "Falso",
+    alternativaC: "",
+    alternativaD: "",
+    alternativaCorreta: "alternativaB"
+  },
+  {
+    pergunta: "Segundo a lore, como Shaco foi criado?",
+    alternativaA: "Ele estava em um campo de batalha destruído",
+    alternativaB: "Foi criado como brinquedo para um príncipe e corrompido pela magia negra",
+    alternativaC: "Surgiu de um ritual de invocação",
+    alternativaD: "Escapou de uma prisão dimensional",
+    alternativaCorreta: "alternativaB"
+  },
+  {
+    pergunta: "Qual habilidade envenena os inimigos passivamente e causa dano extra abaixo de 30% de vida?",
+    alternativaA: "Q — Enganar",
+    alternativaB: "W — Jack in the Box",
+    alternativaC: "E — Veneno de Dois Gumes",
+    alternativaD: "R — Alucinações",
+    alternativaCorreta: "alternativaC"
+  },
+  {
+    pergunta: "Qual detalhe oculto conecta Shaco diretamente ao conceito de caos?",
+    alternativaA: "O sorriso do boneco",
+    alternativaB: "O desaparecimento do príncipe",
+    alternativaC: "O nome ser um anagrama de 'Chaos'",
+    alternativaD: "As adagas envenenadas",
+    alternativaCorreta: "alternativaC"
+  },
+  {
+  pergunta: "O que é o que é? Um palhaço sorridente, vestido de amarelo e vermelho.",
+  alternativaA: "Uma péssima decisão de moda 👎",
+  alternativaB: "Ketchup e mostarda após ganhar consciência 🍅",
+  alternativaC: "O mascote de uma rede de fast-food 🍔",
+  alternativaD: "Shaco McDonald's 👍",
+  alternativaCorreta: "alternativaD"
+}
+]
+  // variáveis globais    
+  let numeroDaQuestaoAtual = 0
+  let pontuacaoFinal = 0
+  let tentativaIncorreta = 0
+  let certas = 0
+  let erradas = 0
+  let quantidadeDeQuestoes = listaDeQuestoes.length
+  // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
+  function onloadEsconder() {
+    document.getElementById('pontuacao').style.display = "none"
+    document.getElementById('jogo').style.display = "none"
+  }
+
+  function iniciarQuiz() {
+    document.getElementById('pontuacao').style.display = "flex"
+    document.getElementById('jogo').style.display = "flex"
+    document.getElementById('btnIniciarQuiz').style.display = "none"
+
+    document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+    preencherHTMLcomQuestaoAtual(0)
+
+    btnSubmeter.disabled = false
+    btnProx.disabled = true
+    // btnConcluir.disabled = true
+    btnTentarNovamente.disabled = true
+  }
+
+  function preencherHTMLcomQuestaoAtual(index) {
+    habilitarAlternativas(true)
+    const questaoAtual = listaDeQuestoes[index]
+    numeroDaQuestaoAtual = index
+    console.log("questaoAtual")
+    console.log(questaoAtual)
+    document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+    document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+    document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+    document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+    document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+    document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+
+    // pega o elemento pai com o parentElement e verifica com operador ternário(que é uma forma curta de escrever if/else) se tem ou não texto. Ai direciona pro block ou none a depender do caso
+    document.getElementById("labelOpcaoTres").parentElement.style.display = questaoAtual.alternativaC ? "block" : "none"
+    document.getElementById("labelOpcaoQuatro").parentElement.style.display = questaoAtual.alternativaD ? "block" : "none"
+  }
+
+  function submeter() {
+    const options = document.getElementsByName("option"); // recupera alternativas no html
+
+    let hasChecked = false
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].checked) {
+        hasChecked = true
+        break
+      }
+    }
+
+    if (!hasChecked) {
+      alert("Não há alternativas escolhidas. Escolha uma opção.")
+    } else {
+      btnSubmeter.disabled = true
+      btnProx.disabled = false
+
+      habilitarAlternativas(false)
+
+      checarResposta()
+    }
+  }
+
+  function habilitarAlternativas(trueOrFalse) {
+    let opcaoEscolhida = trueOrFalse ? false : true
+
+    primeiraOpcao.disabled = opcaoEscolhida
+    segundaOpcao.disabled = opcaoEscolhida
+    terceiraOpcao.disabled = opcaoEscolhida
+    quartaOpcao.disabled = opcaoEscolhida
+
+  }
+
+  function avancar() {
+    btnProx.disabled = true
+    btnSubmeter.disabled = false
+
+    desmarcarRadioButtons()
+
+    if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+      preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+    } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+      alert("Atenção... a próxima é a ultima questão!")
+      preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+    } else {
+      finalizarJogo()
+    }
+    limparCoresBackgroundOpcoes()
+  }
+
+  function tentarNovamente() {
+    // atualiza a página
+    window.location.reload()
+  }
+
+  function checarResposta() {
+    const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
+    const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+
+    const options = document.getElementsByName("option"); // recupera alternativas no html
+
+    let alternativaCorreta = null // variável para armazenar a alternativa correta
+
+    options.forEach((option) => {
+      if (option.value === respostaQuestaoAtual) {
+        console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+        alternativaCorreta = option.labels[0].id
+      }
+    })
+
+    // verifica se resposta assinalada é correta
+    options.forEach((option) => {
+      if (option.checked === true && option.value === respostaQuestaoAtual) {
+        document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+        pontuacaoFinal++
+        certas++
+        document.getElementById("spanCertas").innerHTML = certas
+        numeroDaQuestaoAtual++
+      } else if (option.checked && option.value !== respostaQuestaoAtual) {
+        const wrongLabelId = option.labels[0].id
+
+        document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
+        document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+        tentativaIncorreta++
+        erradas++
+        document.getElementById("spanErradas").innerHTML = erradas
+        numeroDaQuestaoAtual++
+      }
+    })
+  }
+
+  function limparCoresBackgroundOpcoes() {
+    const options = document.getElementsByName("option");
+    options.forEach((option) => {
+      document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
+      document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
+    })
+  }
+
+  function desmarcarRadioButtons() {
+    const options = document.getElementsByName("option");
+    for (let i = 0; i < options.length; i++) {
+      options[i].checked = false;
+    }
+  }
+
+  function finalizarJogo() {
+    let textoParaMensagemFinal = null
+    let classComCoresParaMensagemFinal = null
+    const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+    if (porcentagemFinalDeAcertos < 0.25) {
+      textoParaMensagemFinal = "🤡 Vítima da Pegadinha<br>Eu até diria que você foi bem mas ai estariamos os dois errados"
+      classComCoresParaMensagemFinal = "text-danger-with-bg"
+    } else if (porcentagemFinalDeAcertos <= 0.4) {
+      textoParaMensagemFinal = "🎭 Clone Suspeito<br>Por um momento achei que você sabia. Foi uma ilusão."
+      classComCoresParaMensagemFinal = "text-warning-with-bg"
+    } else if (porcentagemFinalDeAcertos <= 0.6) {
+      textoParaMensagemFinal = "🎪 Aprendiz do Caos <br> Nem tudo que brilha é ouro. Nem toda resposta marcada estava certa."
+      classComCoresParaMensagemFinal = "text-warning-with-bg"
+    } else if (porcentagemFinalDeAcertos <= 0.8) {
+      textoParaMensagemFinal = "🗡️ Mestre das Ilusões <br> Poucos chegam tão longe sem explodir uma caixa surpresa."
+      classComCoresParaMensagemFinal = "text-warning-with-bg"
+    } else if (porcentagemFinalDeAcertos <= 0.9) {
+      textoParaMensagemFinal = "🎭 Caçador de clones <br> Nem os clones conseguiram te enganar. "
+      classComCoresParaMensagemFinal = "text-warning-with-bg"
+    } else { textoParaMensagemFinal = "👁️ Imune a ilusões <br> Resultado perfeito. Suspeitamente perfeito...Os clones estão pedindo revisão do resultado "
+      classComCoresParaMensagemFinal = "text-warning-with-bg"
+    }
+    textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+
+
+    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+    document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+    document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+    document.getElementById('jogo').classList.add("text-new-gray")
+
+    btnProx.disabled = true
+    btnSubmeter.disabled = true
+    // btnConcluir.disabled = true
+    btnTentarNovamente.disabled = false
+  }
 </script>
