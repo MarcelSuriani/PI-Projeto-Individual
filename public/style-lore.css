@@ -1,37 +1,37 @@
 /* fonte personalizada */
 @font-face {
   font-family: Tommy-B;
-  src: url(/public/assets/font/Tommy/Tommy-bold.otf) format('opentype');
+  src: url(/assets/font/Tommy/Tommy-bold.otf) format('opentype');
   font-style: bold;
 }
 
 @font-face {
   font-family: Tommy-l;
-  src: url(/public/assets/font/Tommy/Tommy-light.otf) format('opentype');
+  src: url(/assets/font/Tommy/Tommy-light.otf) format('opentype');
   font-style: light;
 }
 
 @font-face {
   font-family: Tommy-m;
-  src: url(/public/assets/font/Tommy/Tommy-medium.otf) format('opentype');
+  src: url(/assets/font/Tommy/Tommy-medium.otf) format('opentype');
   font-style: medium;
 }
 
 @font-face {
   font-family: Tommy-r;
-  src: url(/public/assets/font/Tommy/Tommy-regular.otf) format('opentype');
+  src: url(/assets/font/Tommy/Tommy-regular.otf) format('opentype');
   font-style: regular;
 }
 
 @font-face {
   font-family: Tommy-t;
-  src: url(/public/assets/font/Tommy/Tommy-thin.otf) format('opentype');
+  src: url(/assets/font/Tommy/Tommy-thin.otf) format('opentype');
   font-style: thin;
 }
 
 @font-face {
   font-family: CrazyKiller;
-  src: url(/public/assets/font/Crazy-Killer/Crazy-Killer.TTF) format('truetype');
+  src: url(/assets/font/Crazy-Killer/Crazy-Killer.TTF) format('truetype');
   text-decoration: none;
 
 }
@@ -179,7 +179,7 @@ footer {
       rgba(20, 20, 20, 0.5) 85%,
       rgba(20, 20, 20, 0.788) 95%,
       black 100%),
-    url(/public/assets/img/Lore/BG2.png);
+    url(/assets/img/Lore/BG2.png);
   background-size: cover;
   filter: sepia(35%);
   background-size: cover;

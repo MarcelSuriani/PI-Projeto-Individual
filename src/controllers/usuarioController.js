@@ -1,3 +1,5 @@
+var usuarioModel = require("../models/usuarioModel");
+
 function autenticar(req, res) {
     var username = req.body.usernameServer;
     var senha = req.body.senhaServer;
@@ -45,17 +47,17 @@ function cadastrar(req, res) {
 
     // Faça as validações dos valores
     if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+        res.status(400).send("Preencha o campo nome!");
     } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Preencha o campo email!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
+        res.status(400).send("Preencha o campo senha!");
+    } else if (username == undefined) {
+        res.status(400).send("Preencha o campo nome de usuario!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, fkEmpresa)
+        usuarioModel.cadastrar(nome, username, email, senha, telefone)
             .then(
                 function (resultado) {
                     res.json(resultado);
