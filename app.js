@@ -12,6 +12,7 @@ var cors = require("cors");
 var path = require("path");
 
 var tentativaRouter = require("./src/routes/tentativa");
+var favoritoRouter = require("./src/routes/favorito");
 
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
@@ -32,6 +33,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 
 app.use("/tentativas", tentativaRouter);
+app.use("/favoritos", favoritosRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
