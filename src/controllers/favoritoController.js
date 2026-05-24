@@ -9,7 +9,11 @@ function favoritar(req, res) {
     // Passe os valores como parâmetro e vá para o arquivo tentativaModel.js
     favoritoModel.favoritar(fkUsuario, fkSkin, fkHabilidade)
         .then(function (resultado) {
-            res.status(201).json({ mensagem: "Tentativa registrada com sucesso!" }); // só então responde
+            if (resultado.affectedRows === 1) {
+                res.status(201).send("Favoritos registrados com sucesso!");
+            } else {
+                res.status(200).send("Favoritos atualizados com sucesso!");
+            } // 200 atualiza e 201 insere a primeira vez
         })
         .catch(
             function (erro) {

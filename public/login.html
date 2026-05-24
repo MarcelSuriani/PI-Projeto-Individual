@@ -31,7 +31,7 @@
                 <li><a href="/guia.html">GUIA DO CLONE</a></li>
                 <li><a href="/quiz.html">QUIZ</a></li>
                 <li><a href="/dashboard.html">DASHBOARD</a></li>
-                <li class="icons" id="btnEntrar"><a href="/login.html"><img src="/assets/icons/enter.png" alt="login"></a></li>
+                <li class="icons active" id="btnEntrar"><a href="/login.html"><img src="/assets/icons/enter.png" alt="login"></a></li>
                 <li class="icons" id="btnSair" style="display:none"><a onclick="sair()"><img src="/assets/icons/logout.png" alt="logout"></a></li>
             </ul>
         </nav>
@@ -93,6 +93,7 @@
 
         if(login =="" || senha==""){
             alert("Os campos de login e/ou senha não foram preenchidos.")
+            return
         }
 
         fetch("/usuarios/autenticar", {
@@ -125,7 +126,7 @@
                 });
 
             } else {
-                alert("Houve um erro ao tentar realizar o login! \nVerifique login e/ou senha")
+                alert("Houve um erro ao tentar realizar o login! \nVerifique login e/ou senha e tente novamente")
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {

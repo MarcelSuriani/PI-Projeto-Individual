@@ -33,7 +33,8 @@
         <li><a href="/quiz.html">QUIZ</a></li>
         <li><a href="/dashboard.html">DASHBOARD</a></li>
         <li class="icons" id="btnEntrar"><a href="/login.html"><img src="/assets/icons/enter.png" alt="login"></a></li>
-        <li class="icons" id="btnSair" style="display:none"><a onclick="sair()"><img src="/assets/icons/logout.png" alt="logout"></a></li>
+        <li class="icons" id="btnSair" style="display:none"><a onclick="sair()"><img src="/assets/icons/logout.png"
+              alt="logout"></a></li>
       </ul>
     </nav>
   </header>
@@ -375,21 +376,21 @@
 
   let idUsuario = sessionStorage.getItem("ID_USUARIO");
 
-        if (idUsuario) {
-            document.getElementById("btnEntrar").style.display = "none";
-            document.getElementById("btnSair").style.display = "block";
-        }
 
-        function sair() {
-            sessionStorage.clear();
-            alert("logout feito com sucesso")
-            window.location = "/index.html";
-        }
-        
+  if (idUsuario) {
+    document.getElementById("btnEntrar").style.display = "none";
+    document.getElementById("btnSair").style.display = "block";
+  }
+
+  function sair() {
+    sessionStorage.clear();
+    alert("logout feito com sucesso")
+    window.location = "/index.html";
+  }
+
   function enviar() {
     let habilidade = iptHabilidadeFav.value
     let skin = iptSkinFav.value
-    let idUsuario = sessionStorage.ID_USUARIO;
 
     if (habilidade == "" || skin == "") {
       alert("Selecione uma habilidade e uma skin.");
@@ -415,14 +416,16 @@
         fkHabilidadeServer: habilidade /*habilidade é a variavel que tem o mesmo numero que a fkHabilidade no banco de dados*/
       })
     }).then(function (resposta) { /*Verifica se respondeu com sucesso (status 201) ou deu erro.*/
-      if (resposta.ok) {
-        console.log("Favoritos registrados com sucesso!");
-      } else {
-        console.log("Erro ao registrar favoritos.");
-      }
+      resposta.text().then(function (texto) {
+        if (resposta.ok) {/*se respondeu com sucesso ele puxa o texto do controller falando se atualizou ou cadastrou o favorito*/
+          alert(texto);
+        } else {
+          alert("Erro ao salvar preferências.");
+        }
+      });
     }).catch(function (erro) { /*se der algum erro ele mostra no log.*/
       console.log("Erro de conexão: ", erro);
     });
   }
-  
+
 </script>
