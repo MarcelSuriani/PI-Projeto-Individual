@@ -32,8 +32,8 @@
         <li><a href="/guia.html">GUIA DO CLONE</a></li>
         <li><a href="/quiz.html">QUIZ</a></li>
         <li><a href="/dashboard.html">DASHBOARD</a></li>
-        <li class="icons"><a href="/login.html"> <img src="/assets/icons/enter.png" alt=""></a>
-        </li>
+        <li class="icons" id="btnEntrar"><a href="/login.html"><img src="/assets/icons/enter.png" alt="login"></a></li>
+        <li class="icons" id="btnSair" style="display:none"><a onclick="sair()"><img src="/assets/icons/logout.png" alt="logout"></a></li>
       </ul>
     </nav>
   </header>
@@ -372,6 +372,20 @@
 
 </html>
 <script>
+
+  let idUsuario = sessionStorage.getItem("ID_USUARIO");
+
+        if (idUsuario) {
+            document.getElementById("btnEntrar").style.display = "none";
+            document.getElementById("btnSair").style.display = "block";
+        }
+
+        function sair() {
+            sessionStorage.clear();
+            alert("logout feito com sucesso")
+            window.location = "/index.html";
+        }
+        
   function enviar() {
     let habilidade = iptHabilidadeFav.value
     let skin = iptSkinFav.value
