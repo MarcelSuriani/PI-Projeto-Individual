@@ -69,7 +69,7 @@
         </div>
       </div>
 
-         <!-- Linha 2 — 2 cards -->
+      <!-- Linha 2 — 2 cards -->
       <div class="dash-row-3">
         <div class="card">
           <div class="titulo">MESTRE DOS CLONES</div>
@@ -85,7 +85,7 @@
         </div>
         <div class="card">
           <div class="titulo">RANKING HABILIDADES</div>
-            <div class="dash-chart">
+          <div class="dash-chart">
             <canvas id="rankingHabilidades"></canvas>
           </div>
         </div>
@@ -114,6 +114,52 @@
 
 </html>
 <script>
+
+  fetch("/questoes/acertos", { /*chama  as rotas do app.js app.use /questoes e  routes /router.get("/acertos...) dai junta os 2*/
+    // A rota está no plural pq é uma convenção isso, visto que ela representa um conjunto de recursos. Ele puxa isso do app.use dessa rota, no app.js
+    method: "GET", /*GET = recebe*/
+  })
+
+    .then(function (resposta) { /*O resposta recebe a resposta do http o dados converte essa resposta que vem como array diretamente do banco de dados*/
+      resposta.json().then(function (dados) {
+        console.log(dados); // ve o que chegou
+
+      //  o console.log mostra o que chegou no array de dados, e uma variavel cria as barras e outra passa os valores
+      // o dados.map percorre o array e retorna o idQuestao e porcentagemAcertos do select
+        var labelsBarras = dados.map(function (d) { return d.idQuestao; });
+        var valores = dados.map(function (d) { return d.porcentagemAcertos; });
+
+        const ctx4 = document.getElementById('myChart');
+        new Chart(ctx4, {
+          type: 'bar',
+          data: {
+            labels: labelsBarras,
+            datasets: [{
+              label: 'Acertos por questão (%)',
+              data: valores,
+              backgroundColor: 'rgb(134, 130, 111)',
+              borderColor: 'rgba(114, 114, 114, 0.45)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100
+              }
+            }
+          }
+        });
+      });
+    })
+
+    .catch(function (erro) { /*Monitora pra caso de algum erro, ele captura e executa*/
+      console.log("Erro de conexão: ", erro);
+    });
+
 
   const ctx1 = document.getElementById('rankingAcertos');
   new Chart(ctx1, {
@@ -186,29 +232,4 @@
       }
     }
   });
-  
-  const ctx4 = document.getElementById('myChart');
-  new Chart(ctx4, {
-    type: 'bar',
-    data: {
-      labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
-      datasets: [{
-        label: 'Acertos por questão',
-        data: [12, 19, 3, 5, 2, 3,2,4,6,3,6,7],
-        backgroundColor: 'rgb(134, 130, 111)',
-        borderColor: 'rgba(114, 114, 114, 0.45)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
 </script>
- 

@@ -35,7 +35,7 @@ app.use("/usuarios", usuarioRouter);
 
 app.use("/tentativas", tentativaRouter);
 app.use("/favoritos", favoritoRouter);
-app.use("/acertos", questaoRouter);
+app.use("/questoes", questaoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
