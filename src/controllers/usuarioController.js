@@ -1,11 +1,9 @@
-var usuarioModel = require("../models/usuarioModel");
-
 function autenticar(req, res) {
     var username = req.body.usernameServer;
     var senha = req.body.senhaServer;
 
     if (username == undefined) {
-        res.status(400).send("Seu username está undefined!");
+        res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
@@ -18,13 +16,12 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                    });
+                        res.status(200).json(resultadoAutenticar[0]);
+                        // Esse res.status(200) comunica o front que deu tudo certo e envia os dados pra ele salvar no sessionStorage
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Username e/ou senha inválido(s)");
+                        res.status(403).send("username e/ou senha inválido(s)");
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.status(403).send("Mais de um usuário com o mesmo username e senha!");
                     }
                 }
             ).catch(
@@ -40,11 +37,11 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-        var nome = req.body.nomeServer;
-        var email = req.body.emailServer;
-        var senha = req.body.senhaServer;
-        var username = req.body.usernameServer;
-        var telefone = req.body.telefoneServer;
+    var nome = req.body.nomeServer;
+    var username = req.body.usernameServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var telefone = req.body.telefoneServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -53,14 +50,12 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (username == undefined) {
-        res.status(400).send("Seu username está undefined!");
-    } else if (telefone == undefined) {
-        res.status(400).send("Seu telefone está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua empresa a vincular está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, username, telefone)
+        usuarioModel.cadastrar(nome, email, senha, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -95,7 +95,9 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.setItem("ID_USUARIO", json.id);
+                    sessionStorage.setItem("NOME_USUARIO", json.nome);
+                    sessionStorage.setItem("USERNAME_USUARIO", json.username);
 
                     setTimeout(function () {
                         window.location = "index.html";
