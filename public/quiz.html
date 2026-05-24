@@ -223,6 +223,7 @@
   let certas = 0
   let erradas = 0
   let quantidadeDeQuestoes = listaDeQuestoes.length
+  let respostasDoUsuario=[] /*pra registrar cada questão*/
   // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
   function onloadEsconder() {
@@ -349,6 +350,9 @@
         certas++
         document.getElementById("spanCertas").innerHTML = certas
         numeroDaQuestaoAtual++
+        /* esse push pra ir pegando que fica acumulando no promise do tentativaController*/
+        respostasDoUsuario.push({ fkQuestao: numeroDaQuestaoAtual, acertou: 1 })
+        
       } else if (option.checked && option.value !== respostaQuestaoAtual) {
         const wrongLabelId = option.labels[0].id
 
@@ -358,6 +362,8 @@
         erradas++
         document.getElementById("spanErradas").innerHTML = erradas
         numeroDaQuestaoAtual++
+        /* esse push pra ir pegando que fica acumulando no promise do tentativaController*/
+        respostasDoUsuario.push({ fkQuestao: numeroDaQuestaoAtual, acertou: 0 })
       }
     })
   }
@@ -414,5 +420,25 @@
     btnSubmeter.disabled = true
     // btnConcluir.disabled = true
     btnTentarNovamente.disabled = false
+
+    fetch("/tentativas/registrar", { /*chama  as rotas do routes/tentativa*/
+    method: "POST", /*POST = envia*/
+    headers: { /*envia oq? os dados em JSON*/
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        fkUsuarioServer: sessionStorage.getItem("ID_USUARIO"), /*pega o fkUsuario que ta salvo no sessionStorage*/
+        totalAcertosServer: pontuacaoFinal, /*pontuacaoFinal é a variavel que tava acumulando a cada acerto. Ela vai ser preenchida como totalAcertos da tabela*/
+        questoesServer: respostasDoUsuario /*o array que tava acumulando com o promise*/
+    })
+}).then(function (resposta) { /*Verifica se respondeu com sucesso (status 201) ou deu erro.*/
+    if (resposta.ok) {
+        console.log("Tentativa registrada com sucesso!");
+    } else {
+        console.log("Erro ao registrar tentativa.");
+    }
+}).catch(function (erro) { /*se der algum erro ele mostra no log.*/
+    console.log("Erro de conexão: ", erro);
+});
   }
 </script>
