@@ -86,10 +86,14 @@
             alert("logout feito com sucesso")
             window.location = "/index.html";
         }
-        
+
     function entrar() {
         let login = iptLogin.value;
         let senha = iptSenha.value;
+
+        if(login =="" || senha==""){
+            alert("Os campos de login e/ou senha não foram preenchidos.")
+        }
 
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -113,6 +117,7 @@
                     sessionStorage.setItem("NOME_USUARIO", json.nome);
                     sessionStorage.setItem("USERNAME_USUARIO", json.username);
 
+                    alert("Login realizado com sucesso. Redirecionando para landpage")
                     setTimeout(function () {
                         window.location = "index.html";
                     }, 1000); // apenas para exibir o loading
@@ -120,7 +125,7 @@
                 });
 
             } else {
-
+                alert("Houve um erro ao tentar realizar o login! \nVerifique login e/ou senha")
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
