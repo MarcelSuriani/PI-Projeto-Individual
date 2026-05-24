@@ -13,6 +13,7 @@ var path = require("path");
 
 var tentativaRouter = require("./src/routes/tentativa");
 var favoritoRouter = require("./src/routes/favorito");
+var questaoRouter = require("./src/routes/questao");
 
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
@@ -34,6 +35,7 @@ app.use("/usuarios", usuarioRouter);
 
 app.use("/tentativas", tentativaRouter);
 app.use("/favoritos", favoritoRouter);
+app.use("/acertos", questaoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
