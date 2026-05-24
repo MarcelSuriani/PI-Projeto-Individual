@@ -33,7 +33,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 
 app.use("/tentativas", tentativaRouter);
-app.use("/favoritos", favoritosRouter);
+app.use("/favoritos", favoritoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
