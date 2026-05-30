@@ -43,6 +43,16 @@ function tituloJogador(idUsuario) {
 }
 
 function rankingSkins() {
+     var instrucaoSql = `
+    SELECT s.nome, COUNT(f.fkSkin) AS votos
+    FROM favorito f
+    JOIN skin s ON f.fkSkin = s.idSkin
+    GROUP BY f.fkSkin
+    ORDER BY votos DESC
+    LIMIT 5;`
+    ;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 
 }
 

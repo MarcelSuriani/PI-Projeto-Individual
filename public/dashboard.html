@@ -73,19 +73,19 @@
       <!-- Linha 2 — 2 cards -->
       <div class="dash-row-3">
         <div class="card">
-          <div class="titulo">MESTRE DOS CLONES</div>
+          <div class="titulo">TOP 05 - MESTRE DOS CLONES</div>
           <div class="dash-chart">
-            <canvas id="rankingAcertos"></canvas>
+            <canvas id="rankingUsuarios"></canvas>
           </div>
         </div>
         <div class="card">
-          <div class="titulo">RANKING SKINS</div>
+          <div class="titulo">TOP 05 - SKINS MAIS VOTADAS</div>
           <div class="dash-chart">
             <canvas id="rankingSkins"></canvas>
           </div>
         </div>
         <div class="card">
-          <div class="titulo">RANKING HABILIDADES</div>
+          <div class="titulo">TOP 05 - HABILIDADES MAIS VOTADAS</div>
           <div class="dash-chart">
             <canvas id="rankingHabilidades"></canvas>
           </div>
@@ -95,7 +95,7 @@
       <!-- Linha 3 — 1 card -->
       <div class="dash-row-1">
         <div class="card">
-          <div class="titulo">ACERTO POR PERGUNTA - QUIZ</div>
+          <div class="titulo">QUIZ - ACERTO POR PERGUNTA</div>
           <div class="dash-chart">
             <canvas id="acertosPorQuestao"></canvas>
           </div>
@@ -153,9 +153,9 @@ function plotarGraficoAcertos(dados) {
   let xlabels = dados.map(function (d) { return "Q" + d.idQuestao; });
   let yvalores = dados.map(function (d) { return d.porcentagemAcertos; });
 
-    const ctx = document.getElementById('acertosPorQuestao');
+    const ctx1 = document.getElementById('acertosPorQuestao');
     
-    new Chart(ctx, {
+    new Chart(ctx1, {
         type: 'bar', 
         data: {
             labels: xlabels, 
@@ -207,14 +207,14 @@ function plotarGraficoRankingUsuarios(dados) {
   let xlabels = dados.map(function (d) { return d.username; });
   let yvalores = dados.map(function (d) { return d.melhorPontuacao; });
 
-    const ctx = document.getElementById('rankingAcertos');
+    const ctx2 = document.getElementById('rankingUsuarios');
     
-    new Chart(ctx, {
+    new Chart(ctx2, {
         type: 'bar', 
         data: {
             labels: xlabels, 
             datasets: [{
-                label: 'Total de acertos', 
+                label: 'Total de acertos por usuário', 
                 data: yvalores, 
                 backgroundColor: 'rgb(134, 130, 111)',
                 borderColor: 'rgba(114, 114, 114, 0.45)',
@@ -237,53 +237,58 @@ function plotarGraficoRankingUsuarios(dados) {
 // chama a função quando a pagina for carregada, "tipo um parametro global"
 obterDadosRankingUsuarios();
 
-  
 
-  const ctx2 = document.getElementById('rankingSkins');
-  new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: ['Mcdonalds', 'Estrela Negra', 'Chapeleiro Maluco', 'Goseong', 'Classica'],
-      datasets: [{
-        label: 'Quantidade de votos por skin',
-        data: [22, 14, 9, 5, 3],
-        backgroundColor: 'rgb(193, 104, 118)',
-        borderColor: 'rgba(114, 114, 114, 0.45)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true
+  function obterDadosRankingSkins() {
+    // busca os dados de votação das skins na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
+    fetch("/dashboard/ranking-skins", { cache: 'no-store' }).then(function (resposta) {
+        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
+        
+        if (resposta.ok) {
+            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+            resposta.json().then(function (dados) {
+                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+                plotarGraficoRankingSkins(dados);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
         }
-      }
-    }
-  });
+    }).catch(function (erro) {
+        console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+}
 
-  const ctx3 = document.getElementById('rankingHabilidades');
-  new Chart(ctx3, {
-    data: {
-    type: 'bar',
-      labels: ['Alucinações', 'Enganar', 'Jack in the Box', 'Veneno de dois Gumes', 'Apunhalar'],
-      datasets: [{
-        label: 'Acertos por questão',
-        data: [17, 15, 13, 9, 6],
-        backgroundColor: 'rgb(193, 104, 118)',
-        borderColor: 'rgba(114, 114, 114, 0.45)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true
+function plotarGraficoRankingSkins(dados) {
+  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+  let xlabels = dados.map(function (d) { return d.nome; });
+  let yvalores = dados.map(function (d) { return d.votos; });
+
+    const ctx3 = document.getElementById('rankingSkins');
+    
+    new Chart(ctx3, {
+        type: 'bar', 
+        data: {
+            labels: xlabels, 
+            datasets: [{
+                label: 'Quantidade de votos por skin', 
+                data: yvalores, 
+                backgroundColor: 'rgb(134, 130, 111)',
+                borderColor: 'rgba(114, 114, 114, 0.45)',
+                borderWidth: 1 
+            }]
+        },
+        options: {
+            responsive: true, 
+            maintainAspectRatio: false, 
+            scales: { 
+                y: { 
+                    beginAtZero: true, 
+                    grace: 0
+                } 
+            }
         }
-      }
-    }
-  });
+    });
+}
+
+// chama a função quando a pagina for carregada, "tipo um parametro global"
+obterDadosRankingSkins();
 </script>

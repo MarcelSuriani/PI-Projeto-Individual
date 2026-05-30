@@ -1,5 +1,10 @@
 var dashboardModel = require("../models/dashboardModel");
 
+
+// chamo a função
+// dashboardModel(nome do arquivo onde está a função que eu to fazendo req e res).função que to chamando
+// então, quando a função que eu chamei, trouxer o (resultado) e o resultado vier ok, eu respondo um status 200 com o json que veio no resultado da requisição da função
+// caso de algo errado,  ele cai no catch
 function acertosPorQuestao(req, res) {
     dashboardModel.acertosPorQuestao()
         .then(function (resultado) {
@@ -52,7 +57,21 @@ function tituloJogador(idUsuario) {
 
 } 
 
-function rankingSkins() {
+function rankingSkins(req,res) {
+      dashboardModel.rankingSkins()
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a busca de dados! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 
 } 
 

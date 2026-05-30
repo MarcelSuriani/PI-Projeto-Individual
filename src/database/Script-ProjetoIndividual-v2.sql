@@ -110,5 +110,12 @@ SELECT q.idQuestao, q.pergunta Pergunta,
 ROUND((SUM(CASE WHEN tq.acertou = 1 THEN 1 ELSE 0 END) / COUNT(tq.idTentativaQuestao)) * 100, 1) AS porcentagemAcertos
 FROM questao q
 LEFT JOIN tentativaQuestao tq ON q.idQuestao = tq.fkQuestao
-GROUP BY q.idQuestao, q.pergunta
+GROUP BY q.idQuestao
 ORDER BY q.idQuestao;
+
+SELECT u.username, MAX(t.totalAcertos) AS melhorPontuacao
+FROM tentativa t
+JOIN usuario u ON t.fkUsuario = u.idUsuario
+GROUP BY u.username
+ORDER BY melhorPontuacao DESC
+LIMIT 5;
