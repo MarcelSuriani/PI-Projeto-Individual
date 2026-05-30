@@ -13,6 +13,19 @@ function acertosPorQuestao() {
     return database.executar(instrucaoSql);
 }
 
+function rankingQuiz() {
+
+}
+function rankingSkin() {
+
+}
+function rankingHabilidade() {
+
+}
+function rankingQuiz() {
+
+}
+
 module.exports = {
     acertosPorQuestao
 };

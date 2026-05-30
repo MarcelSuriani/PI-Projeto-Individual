@@ -1,8 +1,8 @@
-var questaoModel = require("../models/questaoModel");
+var dashboardModel = require("../models/dashboardModel");
 
 function acertosPorQuestao(req, res) {
 
-    questaoModel.acertosPorQuestao()
+    dashboardModel.acertosPorQuestao()
         .then(function (resultado) {
             res.status(200).json(resultado);
         })

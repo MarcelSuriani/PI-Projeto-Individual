@@ -6,7 +6,7 @@ function favoritar(req, res) {
     var fkSkin = req.body.fkSkinServer;
     var fkHabilidade = req.body.fkHabilidadeServer;
 
-    // Passe os valores como parâmetro e vá para o arquivo tentativaModel.js
+    // Passe os valores como parâmetro e vá para o arquivo favoritoModel.js
     favoritoModel.favoritar(fkUsuario, fkSkin, fkHabilidade)
         .then(function (resultado) {
             if (resultado.affectedRows === 1) {
