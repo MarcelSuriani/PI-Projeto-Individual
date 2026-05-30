@@ -19,6 +19,41 @@ function acertosPorQuestao(req, res) {
 
 }
 
+function taxaMediaAcerto(idUsuario) {
+
+}
+
+function totalQuizzes() {
+
+}
+
+function melhorPontuacao(idUsuario) {
+
+} 
+
+function tituloJogador(idUsuario) {
+
+} 
+
+function rankingUsuarios() {
+
+} 
+
+function rankingSkins() {
+
+} 
+
+function rankingHabilidades() {
+    
+}
+
 module.exports = {
-    acertosPorQuestao
+    acertosPorQuestao,
+    taxaMediaAcerto,
+    totalQuizzes,
+    melhorPontuacao,
+    tituloJogador,
+    rankingUsuarios,
+    rankingSkins,
+    rankingHabilidades
 }

@@ -34,7 +34,8 @@
         <li><a href="/quiz.html">QUIZ</a></li>
         <li class="active"><a href="/dashboard.html">DASHBOARD</a></li>
         <li class="icons" id="btnEntrar"><a href="/login.html"><img src="/assets/icons/enter.png" alt="login"></a></li>
-        <li class="icons" id="btnSair" style="display:none"><a onclick="sair()"><img src="/assets/icons/logout.png" alt="logout"></a></li>
+        <li class="icons" id="btnSair" style="display:none"><a onclick="sair()"><img src="/assets/icons/logout.png"
+              alt="logout"></a></li>
       </ul>
     </nav>
   </header>
@@ -117,62 +118,70 @@
 
   let idUsuario = sessionStorage.getItem("ID_USUARIO");
 
-        if (idUsuario) {
-            document.getElementById("btnEntrar").style.display = "none";
-            document.getElementById("btnSair").style.display = "block";
+  if (idUsuario) {
+    document.getElementById("btnEntrar").style.display = "none";
+    document.getElementById("btnSair").style.display = "block";
+  }
+
+  function sair() {
+    sessionStorage.clear();
+    alert("logout feito com sucesso")
+    window.location = "/index.html";
+  }
+
+  function obterDadosAcertos() {
+    // busca os dados de acertos por questão na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
+    fetch("/dashboard/acertos", { cache: 'no-store' }).then(function (resposta) {
+        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
+        
+        if (resposta.ok) {
+            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+            resposta.json().then(function (dados) {
+                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+                plotarGraficoAcertos(dados);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
         }
-
-        function sair() {
-            sessionStorage.clear();
-            alert("logout feito com sucesso")
-            window.location = "/index.html";
-        }
-
-  fetch("/questoes/acertos", { /*chama  as rotas do app.js app.use /questoes e  routes /router.get("/acertos...) dai junta os 2*/
-    // A rota está no plural pq é uma convenção isso, visto que ela representa um conjunto de recursos. Ele puxa isso do app.use dessa rota, no app.js
-    method: "GET", /*GET = recebe*/
-  })
-
-    .then(function (resposta) { /*O resposta recebe a resposta do http o dados converte essa resposta que vem como array diretamente do banco de dados*/
-      resposta.json().then(function (dados) {
-        console.log(dados); // ve o que chegou
-
-        //  o console.log mostra o que chegou no array de dados, e uma variavel cria as barras e outra passa os valores
-        // o dados.map percorre o array e retorna o idQuestao e porcentagemAcertos do select
-        var labelsBarras = dados.map(function (d) { return d.idQuestao; });
-        var valores = dados.map(function (d) { return d.porcentagemAcertos; });
-
-        const ctx4 = document.getElementById('myChart');
-        new Chart(ctx4, {
-          type: 'bar',
-          data: {
-            labels: labelsBarras,
-            datasets: [{
-              label: 'Taxa de acertos por questão (%)',
-              data: valores,
-              backgroundColor: 'rgb(193, 104, 118)',
-              borderColor: 'rgba(114, 114, 114, 0.45)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              y: {
-                beginAtZero: true,
-                max: 100
-              }
-            }
-          }
-        });
-      });
-    })
-
-    .catch(function (erro) { /*Monitora pra caso de algum erro, ele captura e executa*/
-      console.log("Erro de conexão: ", erro);
+    }).catch(function (erro) {
+        console.error(`Erro na obtenção dos dados: ${erro.message}`);
     });
+}
 
+function plotarGraficoAcertos(dados) {
+  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+  let xlabels = dados.map(function (d) { return "Q" + d.idQuestao; });
+  let yvalores = dados.map(function (d) { return d.porcentagemAcertos; });
+
+    const ctx = document.getElementById('myChart');
+    
+    new Chart(ctx, {
+        type: 'bar', 
+        data: {
+            labels: xlabels, 
+            datasets: [{
+                label: 'Acertos por questão (%)', 
+                data: yvalores, 
+                backgroundColor: 'rgb(134, 130, 111)',
+                borderColor: 'rgba(114, 114, 114, 0.45)',
+                borderWidth: 1 
+            }]
+        },
+        options: {
+            responsive: true, 
+            maintainAspectRatio: false, 
+            scales: { 
+                y: { 
+                    beginAtZero: true, 
+                    max: 100 
+                } 
+            }
+        }
+    });
+}
+
+// chama a função quando a pagina for carregada, "tipo um parametro global"
+obterDadosAcertos();
 
   const ctx1 = document.getElementById('rankingAcertos');
   new Chart(ctx1, {

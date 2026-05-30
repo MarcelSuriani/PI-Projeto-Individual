@@ -13,19 +13,41 @@ function acertosPorQuestao() {
     return database.executar(instrucaoSql);
 }
 
-function rankingQuiz() {
+function taxaMediaAcerto(idUsuario) {
 
 }
-function rankingSkin() {
+
+function totalQuizzes() {
 
 }
-function rankingHabilidade() {
 
-}
-function rankingQuiz() {
+function melhorPontuacao(idUsuario) {
+
+} 
+
+function tituloJogador(idUsuario) {
+
+} 
+
+function rankingUsuarios() {
+
+} 
+
+function rankingSkins() {
+
+} 
+
+function rankingHabilidades() {
 
 }
 
 module.exports = {
-    acertosPorQuestao
-};
+    acertosPorQuestao,
+    taxaMediaAcerto,
+    totalQuizzes,
+    melhorPontuacao,
+    tituloJogador,
+    rankingUsuarios,
+    rankingSkins,
+    rankingHabilidades
+}
