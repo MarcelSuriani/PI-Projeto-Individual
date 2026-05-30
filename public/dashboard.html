@@ -55,7 +55,7 @@
         </div>
         <div class="card">
           <div class="titulo">Quizzes feitos</div>
-          <div class="kpi-kpi">14</div>
+          <div id="kpi-quizzesFeitos" class="kpi-kpi"></div>
           <div class="kpi-ancoragem">+3 essa semana</div>
         </div>
         <div class="card">
@@ -132,217 +132,245 @@
   function obterDadosAcertos() {
     // busca os dados de acertos por questão na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
     fetch("/dashboard/acertos", { cache: 'no-store' }).then(function (resposta) {
-        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
-        
-        if (resposta.ok) {
-            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
-            resposta.json().then(function (dados) {
-                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
-                plotarGraficoAcertos(dados);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    }).catch(function (erro) {
-        console.error(`Erro na obtenção dos dados: ${erro.message}`);
-    });
-}
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco
 
-function plotarGraficoAcertos(dados) {
-  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-  let xlabels = dados.map(function (d) { return "Q" + d.idQuestao; });
-  let yvalores = dados.map(function (d) { return d.porcentagemAcertos; });
+      if (resposta.ok) {
+        // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          plotarGraficoAcertos(dados);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  function plotarGraficoAcertos(dados) {
+    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+    let xlabels = dados.map(function (d) { return "Q" + d.idQuestao; });
+    let yvalores = dados.map(function (d) { return d.porcentagemAcertos; });
 
     const ctx1 = document.getElementById('acertosPorQuestao');
-    
+
     new Chart(ctx1, {
-        type: 'bar', 
-        data: {
-            labels: xlabels, 
-            datasets: [{
-                label: 'Acertos por questão (%)', 
-                data: yvalores, 
-                backgroundColor: 'rgb(134, 130, 111)',
-                borderColor: 'rgba(114, 114, 114, 0.45)',
-                borderWidth: 1 
-            }]
-        },
-        options: {
-            responsive: true, 
-            maintainAspectRatio: false, 
-            scales: { 
-                y: { 
-                    beginAtZero: true, 
-                    max: 100 
-                } 
-            }
+      type: 'bar',
+      data: {
+        labels: xlabels,
+        datasets: [{
+          label: 'Acertos por questão (%)',
+          data: yvalores,
+          backgroundColor: 'rgb(134, 130, 111)',
+          borderColor: 'rgba(114, 114, 114, 0.45)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
         }
+      }
     });
-}
+  }
 
-// chama a função quando a pagina for carregada, "tipo um parametro global"
-obterDadosAcertos();
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterDadosAcertos();
 
-function obterDadosRankingUsuarios() {
+  function obterDadosRankingUsuarios() {
     // busca os dados de acertos por questão na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
     fetch("/dashboard/ranking-usuarios", { cache: 'no-store' }).then(function (resposta) {
-        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
-        
-        if (resposta.ok) {
-            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
-            resposta.json().then(function (dados) {
-                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
-                plotarGraficoRankingUsuarios(dados);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    }).catch(function (erro) {
-        console.error(`Erro na obtenção dos dados: ${erro.message}`);
-    });
-}
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco
 
-function plotarGraficoRankingUsuarios(dados) {
-  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-  let xlabels = dados.map(function (d) { return d.username; });
-  let yvalores = dados.map(function (d) { return d.melhorPontuacao; });
+      if (resposta.ok) {
+        // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          plotarGraficoRankingUsuarios(dados);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  function plotarGraficoRankingUsuarios(dados) {
+    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+    let xlabels = dados.map(function (d) { return d.username; });
+    let yvalores = dados.map(function (d) { return d.melhorPontuacao; });
 
     const ctx2 = document.getElementById('rankingUsuarios');
-    
-    new Chart(ctx2, {
-        type: 'bar', 
-        data: {
-            labels: xlabels, 
-            datasets: [{
-                label: 'Total de acertos por usuário', 
-                data: yvalores, 
-                backgroundColor: 'rgb(134, 130, 111)',
-                borderColor: 'rgba(114, 114, 114, 0.45)',
-                borderWidth: 1 
-            }]
-        },
-        options: {
-            responsive: true, 
-            maintainAspectRatio: false, 
-            scales: { 
-                y: { 
-                    beginAtZero: true, 
-                    max: 12 
-                } 
-            }
-        }
-    });
-}
 
-// chama a função quando a pagina for carregada, "tipo um parametro global"
-obterDadosRankingUsuarios();
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: xlabels,
+        datasets: [{
+          label: 'Total de acertos por usuário',
+          data: yvalores,
+          backgroundColor: 'rgb(134, 130, 111)',
+          borderColor: 'rgba(114, 114, 114, 0.45)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 12
+          }
+        }
+      }
+    });
+  }
+
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterDadosRankingUsuarios();
 
 
   function obterDadosRankingSkins() {
     // busca os dados de votação das skins na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
     fetch("/dashboard/ranking-skins", { cache: 'no-store' }).then(function (resposta) {
-        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
-        
-        if (resposta.ok) {
-            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
-            resposta.json().then(function (dados) {
-                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
-                plotarGraficoRankingSkins(dados);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    }).catch(function (erro) {
-        console.error(`Erro na obtenção dos dados: ${erro.message}`);
-    });
-}
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco
 
-function plotarGraficoRankingSkins(dados) {
-  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-  let xlabels = dados.map(function (d) { return d.nome; });
-  let yvalores = dados.map(function (d) { return d.votos; });
+      if (resposta.ok) {
+        // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          plotarGraficoRankingSkins(dados);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  function plotarGraficoRankingSkins(dados) {
+    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+    let xlabels = dados.map(function (d) { return d.nome; });
+    let yvalores = dados.map(function (d) { return d.votos; });
 
     const ctx3 = document.getElementById('rankingSkins');
-    
+
     new Chart(ctx3, {
-        type: 'bar', 
-        data: {
-            labels: xlabels, 
-            datasets: [{
-                label: 'Quantidade de votos por skin', 
-                data: yvalores, 
-                backgroundColor: 'rgb(134, 130, 111)',
-                borderColor: 'rgba(114, 114, 114, 0.45)',
-                borderWidth: 1 
-            }]
-        },
-        options: {
-            responsive: true, 
-            maintainAspectRatio: false, 
-            scales: { 
-                y: { 
-                    beginAtZero: true, 
-                    grace: 0
-                } 
-            }
+      type: 'bar',
+      data: {
+        labels: xlabels,
+        datasets: [{
+          label: 'Quantidade de votos por skin',
+          data: yvalores,
+          backgroundColor: 'rgb(134, 130, 111)',
+          borderColor: 'rgba(114, 114, 114, 0.45)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grace: 0
+          }
         }
+      }
     });
-}
+  }
 
-// chama a função quando a pagina for carregada, "tipo um parametro global"
-obterDadosRankingSkins();
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterDadosRankingSkins();
 
- function obterRankingHabilidades() {
+  function obterRankingHabilidades() {
     // busca os dados de acertos por questão na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
     fetch("/dashboard/ranking-habilidades", { cache: 'no-store' }).then(function (resposta) {
-        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
-        
-        if (resposta.ok) {
-            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
-            resposta.json().then(function (dados) {
-                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
-                plotarGraficoRankingHabilidades(dados);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    }).catch(function (erro) {
-        console.error(`Erro na obtenção dos dados: ${erro.message}`);
-    });
-}
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco
 
-function plotarGraficoRankingHabilidades(dados) {
-  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-  let xlabels = dados.map(function (d) { return d.nome; });
-  let yvalores = dados.map(function (d) { return d.votos; });
+      if (resposta.ok) {
+        // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          plotarGraficoRankingHabilidades(dados);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  function plotarGraficoRankingHabilidades(dados) {
+    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+    let xlabels = dados.map(function (d) { return d.nome; });
+    let yvalores = dados.map(function (d) { return d.votos; });
 
     const ctx4 = document.getElementById('rankingHabilidades');
-    
-    new Chart(ctx4, {
-        type: 'bar', 
-        data: {
-            labels: xlabels, 
-            datasets: [{
-                label: 'Quantidade de votos por habilidade', 
-                data: yvalores, 
-                backgroundColor: 'rgb(134, 130, 111)',
-                borderColor: 'rgba(114, 114, 114, 0.45)',
-                borderWidth: 1 
-            }]
-        },
-        options: {
-            responsive: true, 
-            maintainAspectRatio: false, 
-            scales: { 
-                y: { 
-                    beginAtZero: true, 
-                    max: 100 
-                } 
-            }
-        }
-    });
-}
 
-// chama a função quando a pagina for carregada, "tipo um parametro global"
-obterRankingHabilidades();
+    new Chart(ctx4, {
+      type: 'bar',
+      data: {
+        labels: xlabels,
+        datasets: [{
+          label: 'Quantidade de votos por habilidade',
+          data: yvalores,
+          backgroundColor: 'rgb(134, 130, 111)',
+          borderColor: 'rgba(114, 114, 114, 0.45)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100
+          }
+        }
+      }
+    });
+  }
+
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterRankingHabilidades();
+
+
+  function obterQuizzesFeitos() {
+// Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
+    fetch("/dashboard/total-quizzes", { cache: 'no-store' }).then(function (resposta) {
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco 
+
+
+      // Se a resposta for ok(200~299), ele segue: pega a resposta que ao ser passada pelo HTTP foi transformada em uma string, ele converte novametne pra json, então  começa a função dados. Na função dados, ele mostra no console o que foi recebido no json que ele converteu do banco e atribui ele ao elemento de id kpi-quizzesFeitos com o innerHTML com a configuração de dados[indice 0].tentativas_gerais (que é a propriedade que ele ta puxando de dentro do json)
+
+// Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
+      if (resposta.ok) {
+
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          document.getElementById("kpi-quizzesFeitos").innerHTML = dados[0].Tentativas_gerais;
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterQuizzesFeitos();
+
 </script>

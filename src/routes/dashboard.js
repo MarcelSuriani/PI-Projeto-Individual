@@ -8,11 +8,11 @@ var dashboardController = require("../controllers/dashboardController");
 router.get("/acertos", dashboardController.acertosPorQuestao)
 router.get("/ranking-usuarios", dashboardController.rankingUsuarios)
 router.get("/ranking-skins", dashboardController.rankingSkins)
+router.get("/ranking-habilidades", dashboardController.rankingHabilidades)
 
-router.get("/taxa-media-usuario", dashboardController.taxaMediaAcerto)
 router.get("/total-quizzes", dashboardController.totalQuizzes)
+router.get("/taxa-media-usuario", dashboardController.taxaMediaAcerto)
 router.get("/melhor-pontuacao", dashboardController.melhorPontuacao)
 router.get("/titulo-Jogador", dashboardController.tituloJogador)
-router.get("/ranking-habilidades", dashboardController.rankingHabilidades)
 
 module.exports = router;

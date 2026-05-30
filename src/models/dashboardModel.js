@@ -40,22 +40,6 @@ function rankingSkins() {
 
 }
 
-function taxaMediaAcerto(idUsuario) {
-
-}
-
-function totalQuizzes() {
-
-}
-
-function melhorPontuacao(idUsuario) {
-
-}
-
-function tituloJogador(idUsuario) {
-
-}
-
 function rankingHabilidades() {
     var instrucaoSql = `
         SELECT h.nome, COUNT(f.fkHabilidade) AS votos
@@ -67,6 +51,27 @@ function rankingHabilidades() {
         ;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
+}
+
+function taxaMediaAcerto(idUsuario) {
+
+}
+
+function totalQuizzes() {
+        var instrucaoSql = `
+        SELECT COUNT(idTentativa) Tentativas_gerais FROM tentativa;`
+        ;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+
+}
+
+function melhorPontuacao(idUsuario) {
+
+}
+
+function tituloJogador(idUsuario) {
+
 }
 
 module.exports = {
