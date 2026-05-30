@@ -41,8 +41,8 @@ function rankingUsuarios(req, res) {
 
 }
 
-function rankingSkins(req,res) {
-      dashboardModel.rankingSkins()
+function rankingSkins(req, res) {
+    dashboardModel.rankingSkins()
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -56,10 +56,10 @@ function rankingSkins(req,res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-} 
+}
 
 function rankingHabilidades(req, res) {
-          dashboardModel.rankingHabilidades()
+    dashboardModel.rankingHabilidades()
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -72,11 +72,11 @@ function rankingHabilidades(req, res) {
                 );
                 res.status(500).json(erro.sqlMessage);
             }
-        );    
+        );
 }
 
 function totalQuizzes(req, res) {
-              dashboardModel.totalQuizzes()
+    dashboardModel.totalQuizzes()
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -89,12 +89,12 @@ function totalQuizzes(req, res) {
                 );
                 res.status(500).json(erro.sqlMessage);
             }
-        );    
+        );
 
 }
 
 function taxaMediaAcerto(req, res) {
-                  dashboardModel.taxaMediaAcerto()
+    dashboardModel.taxaMediaAcerto()
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -107,25 +107,34 @@ function taxaMediaAcerto(req, res) {
                 );
                 res.status(500).json(erro.sqlMessage);
             }
-        );    
+        );
 
 }
 
 
-function melhorPontuacao(idUsuario) {
-
-} 
-
-function tituloJogador(idUsuario) {
-
-} 
+function melhorPontuacao(req, res) {
+    var idUsuario = req.params.idUsuario;
+    dashboardModel.melhorPontuacao(idUsuario)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a busca de dados! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 module.exports = {
     acertosPorQuestao,
     taxaMediaAcerto,
     totalQuizzes,
     melhorPontuacao,
-    tituloJogador,
     rankingUsuarios,
     rankingSkins,
     rankingHabilidades

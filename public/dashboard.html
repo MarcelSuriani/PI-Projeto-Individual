@@ -60,12 +60,12 @@
         </div>
         <div class="card">
           <div class="titulo">Melhor pontuação</div>
-          <div class="kpi-kpi">12/12</div>
-          <div class="kpi-ancoragem">100% de acerto</div>
+          <div class="kpi-kpi"><span id="kpi-maiorPontuacao"></span>/12</div>
+          <div class="kpi-ancoragem"> <span id="kpi-maiorPorcentagem"></span>% de acerto</div>
         </div>
         <div class="card">
           <div class="titulo">Recorde pessoal</div>
-          <div class="kpi-kpi">TITULO ATRIBUIDO NO FIM DO QUIZ</div>
+          <div id="kpi-tituloAcertos" class="kpi-kpi"></div>
           <div class="kpi-ancoragem"></div>
         </div>
       </div>
@@ -117,6 +117,15 @@
 <script>
 
   let idUsuario = sessionStorage.getItem("ID_USUARIO");
+
+   function verificarLogin(){
+     if (!idUsuario) {
+       alert("Você precisa estar logado para participar do quiz.");
+       window.location = "login.html";
+       return;
+      }
+    }
+    verificarLogin()
 
   if (idUsuario) {
     document.getElementById("btnEntrar").style.display = "none";
@@ -390,7 +399,26 @@
           console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
           document.getElementById("kpi-taxaMediaAcertos").innerHTML = dados[0].porcentagemAcertos;
           document.getElementById("kpi-mediaAcertos").innerHTML = dados[0].mediaAcertos;
-        });
+
+          if (dados[0].mediaAcertos <= 2.5) {
+      document.getElementById("kpi-tituloAcertos").innerHTML = "🤡 Vítima da Pegadinha"
+    
+    } else if (dados[0].mediaAcertos <= 4) {
+      document.getElementById("kpi-tituloAcertos").innerHTML  = "🎭 Clone"
+    
+    } else if (dados[0].mediaAcertos <= 6) {
+      document.getElementById("kpi-tituloAcertos").innerHTML  = "🎪 Aprendiz do Caos"
+    
+    } else if (dados[0].mediaAcertos <= 8) {
+      document.getElementById("kpi-tituloAcertos").innerHTML  = "🗡️ Mestre das Ilusões"
+    
+    } else if (dados[0].mediaAcertos <= 9) {
+      document.getElementById("kpi-tituloAcertos").innerHTML  = "🎭 Caçador de clones"
+
+    } else {
+      document.getElementById("kpi-tituloAcertos").innerHTML  = "👁️ Imune a ilusões"
+    }
+    });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
       }
@@ -401,4 +429,31 @@
 
   // chama a função quando a pagina for carregada, "tipo um parametro global"
   obterTaxaMediaAcertos();
+
+    function obterMelhorPontuacao() {
+// Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
+    fetch(`/dashboard/melhor-pontuacao/${sessionStorage.getItem("ID_USUARIO")}`, { cache: 'no-store' }).then(function (resposta) {
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco 
+
+
+      // Se a resposta for ok(200~299), ele segue: pega a resposta que ao ser passada pelo HTTP foi transformada em uma string, ele converte novametne pra json, então  começa a função dados. Na função dados, ele mostra no console o que foi recebido no json que ele converteu do banco e atribui ele ao elemento de id kpi-quizzesFeitos com o innerHTML com a configuração de dados[indice 0].tentativas_gerais (que é a propriedade que ele ta puxando de dentro do json)
+
+// Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
+      if (resposta.ok) {
+
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          document.getElementById("kpi-maiorPontuacao").innerHTML = dados[0].maiorPontuacao;
+          document.getElementById("kpi-maiorPorcentagem").innerHTML = dados[0].maiorPorcentagem;
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterMelhorPontuacao();
 </script>

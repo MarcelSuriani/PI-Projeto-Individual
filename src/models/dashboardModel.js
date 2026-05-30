@@ -78,11 +78,14 @@ function taxaMediaAcerto() {
 
 
 function melhorPontuacao(idUsuario) {
-
-}
-
-function tituloJogador(idUsuario) {
-
+    var instrucaoSql = `
+    SELECT MAX(totalAcertos) AS maiorPontuacao,
+    ROUND(MAX(totalAcertos) / 12 * 100) AS maiorPorcentagem
+    FROM tentativa
+    WHERE fkUsuario = ${idUsuario};`
+    ;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
 module.exports = {
@@ -90,7 +93,6 @@ module.exports = {
     taxaMediaAcerto,
     totalQuizzes,
     melhorPontuacao,
-    tituloJogador,
     rankingUsuarios,
     rankingSkins,
     rankingHabilidades
