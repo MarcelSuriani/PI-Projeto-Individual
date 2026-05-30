@@ -97,7 +97,7 @@
         <div class="card">
           <div class="titulo">ACERTO POR PERGUNTA - QUIZ</div>
           <div class="dash-chart">
-            <canvas id="myChart"></canvas>
+            <canvas id="acertosPorQuestao"></canvas>
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@ function plotarGraficoAcertos(dados) {
   let xlabels = dados.map(function (d) { return "Q" + d.idQuestao; });
   let yvalores = dados.map(function (d) { return d.porcentagemAcertos; });
 
-    const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('acertosPorQuestao');
     
     new Chart(ctx, {
         type: 'bar', 
@@ -183,29 +183,61 @@ function plotarGraficoAcertos(dados) {
 // chama a função quando a pagina for carregada, "tipo um parametro global"
 obterDadosAcertos();
 
-  const ctx1 = document.getElementById('rankingAcertos');
-  new Chart(ctx1, {
-    type: 'bar',
-    data: {
-      labels: ['Marcel', 'Jessica', 'Lais', 'Matheus', 'Diego'],
-      datasets: [{
-        label: 'Total de acertos',
-        data: [12, 8, 6, 5, 4],
-        backgroundColor: 'rgb(193, 104, 118)',
-        borderColor: 'rgba(114, 114, 114, 0.45)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          beginAtZero: true
+function obterDadosRankingUsuarios() {
+    // busca os dados de acertos por questão na API pela seguinte rota: fetch>app.use>router>controller>model>sql e dps traz de volta no caminho inverso
+    fetch("/dashboard/ranking-usuarios", { cache: 'no-store' }).then(function (resposta) {
+        // cache: no-store = não guarda cache, sempre busca dados frescos do banco
+        
+        if (resposta.ok) {
+            // pega a resposta, converte em json, "então(.then)" prepara a função dados para ser usada como parametro na function de plotar
+            resposta.json().then(function (dados) {
+                console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+                plotarGraficoRankingUsuarios(dados);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
         }
-      }
-    }
-  });
+    }).catch(function (erro) {
+        console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+}
+
+function plotarGraficoRankingUsuarios(dados) {
+  // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
+  let xlabels = dados.map(function (d) { return d.username; });
+  let yvalores = dados.map(function (d) { return d.melhorPontuacao; });
+
+    const ctx = document.getElementById('rankingAcertos');
+    
+    new Chart(ctx, {
+        type: 'bar', 
+        data: {
+            labels: xlabels, 
+            datasets: [{
+                label: 'Total de acertos', 
+                data: yvalores, 
+                backgroundColor: 'rgb(134, 130, 111)',
+                borderColor: 'rgba(114, 114, 114, 0.45)',
+                borderWidth: 1 
+            }]
+        },
+        options: {
+            responsive: true, 
+            maintainAspectRatio: false, 
+            scales: { 
+                y: { 
+                    beginAtZero: true, 
+                    max: 12 
+                } 
+            }
+        }
+    });
+}
+
+// chama a função quando a pagina for carregada, "tipo um parametro global"
+obterDadosRankingUsuarios();
+
+  
 
   const ctx2 = document.getElementById('rankingSkins');
   new Chart(ctx2, {
@@ -233,8 +265,8 @@ obterDadosAcertos();
 
   const ctx3 = document.getElementById('rankingHabilidades');
   new Chart(ctx3, {
-    type: 'bar',
     data: {
+    type: 'bar',
       labels: ['Alucinações', 'Enganar', 'Jack in the Box', 'Veneno de dois Gumes', 'Apunhalar'],
       datasets: [{
         label: 'Acertos por questão',
