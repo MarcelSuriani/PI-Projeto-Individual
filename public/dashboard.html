@@ -50,13 +50,13 @@
       <div class="dash-row-4">
         <div class="card">
           <div class="titulo">Taxa média de acerto</div>
-          <div class="kpi-kpi">66%</div>
-          <div class="kpi-ancoragem"><span id="kpi-taxaMediaAcertos"></span> de 12 questões</div>
+          <div class="kpi-kpi"><span id="kpi-taxaMediaAcertos"></span>%</div>
+          <div class="kpi-ancoragem"><span id="kpi-mediaAcertos"></span> de 12 questões</div>
         </div>
         <div class="card">
           <div class="titulo">Quizzes feitos</div>
           <div id="kpi-quizzesFeitos" class="kpi-kpi"></div>
-          <div class="kpi-ancoragem">+3 essa semana</div>
+          <div class="kpi-ancoragem">+<span id="kpi-quizzesSemana"></span> essa semana</div>
         </div>
         <div class="card">
           <div class="titulo">Melhor pontuação</div>
@@ -360,7 +360,8 @@
 
         resposta.json().then(function (dados) {
           console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
-          document.getElementById("kpi-quizzesFeitos").innerHTML = dados[0].Tentativas_gerais;
+          document.getElementById("kpi-quizzesFeitos").innerHTML = dados[0].totalQuizzes;
+          document.getElementById("kpi-quizzesSemana").innerHTML = dados[0].quizzesSemana;
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -387,7 +388,8 @@
 
         resposta.json().then(function (dados) {
           console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
-          document.getElementById("kpi-taxaMediaAcertos").innerHTML = dados[0].mediaAcertos;
+          document.getElementById("kpi-taxaMediaAcertos").innerHTML = dados[0].porcentagemAcertos;
+          document.getElementById("kpi-mediaAcertos").innerHTML = dados[0].mediaAcertos;
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');

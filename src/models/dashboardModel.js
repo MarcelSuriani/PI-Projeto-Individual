@@ -55,7 +55,10 @@ function rankingHabilidades() {
 
 function totalQuizzes() {
         var instrucaoSql = `
-        SELECT COUNT(idTentativa) Tentativas_gerais FROM tentativa;`
+        SELECT 
+        COUNT(idTentativa) AS totalQuizzes,
+        COUNT(CASE WHEN dataResposta BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() THEN 1 END) AS quizzesSemana
+        FROM tentativa;`
         ;
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
@@ -64,7 +67,8 @@ function totalQuizzes() {
 
 function taxaMediaAcerto() {
     var instrucaoSql = `
-    SELECT ROUND(AVG(totalAcertos),0) AS mediaAcertos
+    SELECT ROUND(AVG(totalAcertos),2) AS mediaAcertos,
+    ROUND((AVG(totalAcertos) / 12 * 100),2) AS porcentagemAcertos
     FROM tentativa;`
     ;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
