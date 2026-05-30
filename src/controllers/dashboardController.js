@@ -75,19 +75,6 @@ function rankingHabilidades(req, res) {
         );    
 }
 
-function taxaMediaAcerto(idUsuario) {
-
-}
-
-
-function melhorPontuacao(idUsuario) {
-
-} 
-
-function tituloJogador(idUsuario) {
-
-} 
-
 function totalQuizzes(req, res) {
               dashboardModel.totalQuizzes()
         .then(function (resultado) {
@@ -105,6 +92,33 @@ function totalQuizzes(req, res) {
         );    
 
 }
+
+function taxaMediaAcerto(req, res) {
+                  dashboardModel.taxaMediaAcerto()
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a busca de dados! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );    
+
+}
+
+
+function melhorPontuacao(idUsuario) {
+
+} 
+
+function tituloJogador(idUsuario) {
+
+} 
 
 module.exports = {
     acertosPorQuestao,

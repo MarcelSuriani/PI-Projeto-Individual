@@ -51,7 +51,7 @@
         <div class="card">
           <div class="titulo">Taxa média de acerto</div>
           <div class="kpi-kpi">66%</div>
-          <div class="kpi-ancoragem">8 de 12 questões</div>
+          <div class="kpi-ancoragem"><span id="kpi-taxaMediaAcertos"></span> de 12 questões</div>
         </div>
         <div class="card">
           <div class="titulo">Quizzes feitos</div>
@@ -64,9 +64,9 @@
           <div class="kpi-ancoragem">100% de acerto</div>
         </div>
         <div class="card">
-          <div class="titulo">Habilidade favorita</div>
-          <div class="kpi-kpi">Nome da habilidade</div>
-          <div class="kpi-ancoragem">Antes era:</div>
+          <div class="titulo">Recorde pessoal</div>
+          <div class="kpi-kpi">TITULO ATRIBUIDO NO FIM DO QUIZ</div>
+          <div class="kpi-ancoragem"></div>
         </div>
       </div>
 
@@ -373,4 +373,30 @@
   // chama a função quando a pagina for carregada, "tipo um parametro global"
   obterQuizzesFeitos();
 
+
+  function obterTaxaMediaAcertos() {
+// Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
+    fetch("/dashboard/taxa-media/", { cache: 'no-store' }).then(function (resposta) {
+      // cache: no-store = não guarda cache, sempre busca dados frescos do banco 
+
+
+      // Se a resposta for ok(200~299), ele segue: pega a resposta que ao ser passada pelo HTTP foi transformada em uma string, ele converte novametne pra json, então  começa a função dados. Na função dados, ele mostra no console o que foi recebido no json que ele converteu do banco e atribui ele ao elemento de id kpi-quizzesFeitos com o innerHTML com a configuração de dados[indice 0].tentativas_gerais (que é a propriedade que ele ta puxando de dentro do json)
+
+// Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
+      if (resposta.ok) {
+
+        resposta.json().then(function (dados) {
+          console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+          document.getElementById("kpi-taxaMediaAcertos").innerHTML = dados[0].mediaAcertos;
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na obtenção dos dados: ${erro.message}`);
+    });
+  }
+
+  // chama a função quando a pagina for carregada, "tipo um parametro global"
+  obterTaxaMediaAcertos();
 </script>

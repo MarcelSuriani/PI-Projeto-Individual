@@ -53,10 +53,6 @@ function rankingHabilidades() {
         return database.executar(instrucaoSql);
 }
 
-function taxaMediaAcerto(idUsuario) {
-
-}
-
 function totalQuizzes() {
         var instrucaoSql = `
         SELECT COUNT(idTentativa) Tentativas_gerais FROM tentativa;`
@@ -65,6 +61,17 @@ function totalQuizzes() {
         return database.executar(instrucaoSql);
 
 }
+
+function taxaMediaAcerto() {
+    var instrucaoSql = `
+    SELECT ROUND(AVG(totalAcertos),0) AS mediaAcertos
+    FROM tentativa;`
+    ;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 
 function melhorPontuacao(idUsuario) {
 
