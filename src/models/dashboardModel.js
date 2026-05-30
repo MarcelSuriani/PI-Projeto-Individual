@@ -26,6 +26,20 @@ function rankingUsuarios() {
     return database.executar(instrucaoSql);
 }
 
+function rankingSkins() {
+     var instrucaoSql = `
+    SELECT s.nome, COUNT(f.fkSkin) AS votos
+    FROM favorito f
+    JOIN skin s ON f.fkSkin = s.idSkin
+    GROUP BY f.fkSkin
+    ORDER BY votos DESC
+    LIMIT 5;`
+    ;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+}
+
 function taxaMediaAcerto(idUsuario) {
 
 }
@@ -42,22 +56,17 @@ function tituloJogador(idUsuario) {
 
 }
 
-function rankingSkins() {
-     var instrucaoSql = `
-    SELECT s.nome, COUNT(f.fkSkin) AS votos
-    FROM favorito f
-    JOIN skin s ON f.fkSkin = s.idSkin
-    GROUP BY f.fkSkin
-    ORDER BY votos DESC
-    LIMIT 5;`
-    ;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-
-}
-
 function rankingHabilidades() {
-
+    var instrucaoSql = `
+        SELECT h.nome, COUNT(f.fkHabilidade) AS votos
+        FROM favorito f
+        JOIN habilidade h ON f.fkHabilidade = h.idHabilidade
+        GROUP BY f.fkHabilidade
+        ORDER BY votos DESC
+        LIMIT 5;`
+        ;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
 }
 
 module.exports = {

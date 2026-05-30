@@ -41,22 +41,6 @@ function rankingUsuarios(req, res) {
 
 }
 
-function taxaMediaAcerto(idUsuario) {
-
-}
-
-function totalQuizzes() {
-
-}
-
-function melhorPontuacao(idUsuario) {
-
-} 
-
-function tituloJogador(idUsuario) {
-
-} 
-
 function rankingSkins(req,res) {
       dashboardModel.rankingSkins()
         .then(function (resultado) {
@@ -72,12 +56,40 @@ function rankingSkins(req,res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
+} 
+
+function rankingHabilidades(req, res) {
+          dashboardModel.rankingHabilidades()
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar a busca de dados! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );    
+}
+
+function taxaMediaAcerto(idUsuario) {
+
+}
+
+function totalQuizzes() {
+
+}
+
+function melhorPontuacao(idUsuario) {
 
 } 
 
-function rankingHabilidades() {
-    
-}
+function tituloJogador(idUsuario) {
+
+} 
 
 module.exports = {
     acertosPorQuestao,
