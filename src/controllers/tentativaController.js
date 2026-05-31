@@ -11,9 +11,10 @@ function registrar(req, res) {
         .then(function (resultado) {
             var idTentativa = resultado.insertId; // pega o id da tentativa que foi registrada pelo insert da tentativa
 
-            var promessas = questoes.map(function (q) { // cria uma Promise para cada questão. Ele vai armazenando dentro de um array e criando um insert pra cada promisse que ta sendo criado
-                return tentativaModel.registrarQuestao(idTentativa, q.fkQuestao, q.acertou);
-            });
+            var promessas = [];
+                for (var i = 0; i < questoes.length; i++) {
+                promessas.push(tentativaModel.registrarQuestao(idTentativa, questoes[i].fkQuestao, questoes[i].acertou));
+}
 
             Promise.all(promessas).then(function () { // espera todas as questões serem salvas
                 res.status(201).json({ mensagem: "Tentativa registrada com sucesso!" }); // só então responde

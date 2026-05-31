@@ -18,6 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 </head>
 
@@ -118,14 +119,14 @@
 
   let idUsuario = sessionStorage.getItem("ID_USUARIO");
 
-   function verificarLogin(){
-     if (!idUsuario) {
-       alert("Você precisa estar logado para participar do quiz.");
-       window.location = "login.html";
-       return;
-      }
+  function verificarLogin() {
+    if (!idUsuario) {
+      alert("Você precisa estar logado para ver a dashboard.");
+      window.location = "login.html";
+      return;
     }
-    verificarLogin()
+  }
+  verificarLogin()
 
   if (idUsuario) {
     document.getElementById("btnEntrar").style.display = "none";
@@ -159,9 +160,15 @@
 
   function plotarGraficoAcertos(dados) {
     // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-    let xlabels = dados.map(function (d) { return "Q" + d.idQuestao; });
-    let yvalores = dados.map(function (d) { return d.porcentagemAcertos; });
 
+    let xlabels = [];
+    let yvalores = [];
+    for (let i = 0; i < dados.length; i++) {
+      xlabels.push("Q" + dados[i].idQuestao);
+      yvalores.push(dados[i].porcentagemAcertos);
+    }
+
+    Chart.register(ChartDataLabels);
     const ctx1 = document.getElementById('acertosPorQuestao');
 
     new Chart(ctx1, {
@@ -177,9 +184,31 @@
         }]
       },
       options: {
+                    layout: {
+        padding: {
+            top: 30,
+        }
+    },
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+                    legend: {
+        position: 'bottom'
+    },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: 'rgb(190, 180, 136)',
+            font: { weight: 'bold' },
+          }
+        },
         scales: {
+              x: {
+        ticks: {
+            maxRotation: 0,
+            minRotation: 0
+        }
+    },
           y: {
             beginAtZero: true,
             max: 100
@@ -212,10 +241,14 @@
   }
 
   function plotarGraficoRankingUsuarios(dados) {
-    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-    let xlabels = dados.map(function (d) { return d.username; });
-    let yvalores = dados.map(function (d) { return d.melhorPontuacao; });
+    let xlabels = [];
+    let yvalores = [];
+    for (let i = 0; i < dados.length; i++) {
+      xlabels.push(dados[i].username);
+      yvalores.push(dados[i].melhorPontuacao);
+    }
 
+        Chart.register(ChartDataLabels);
     const ctx2 = document.getElementById('rankingUsuarios');
 
     new Chart(ctx2, {
@@ -226,14 +259,36 @@
           label: 'Total de acertos por usuário',
           data: yvalores,
           backgroundColor: 'rgb(134, 130, 111)',
-          borderColor: 'rgba(114, 114, 114, 0.45)',
-          borderWidth: 1
+          borderColor: 'rgb(190, 180, 136)',
+          borderWidth: 0
         }]
       },
       options: {
+                    layout: {
+        padding: {
+            top: 30,
+        }
+    },
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+                    legend: {
+        position: 'bottom'
+    },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: 'rgb(190, 180, 136)',
+            font: { weight: 'bold' },
+          }
+        },
         scales: {
+              x: {
+        ticks: {
+            maxRotation: 0,
+            minRotation: 0
+        }
+    },
           y: {
             beginAtZero: true,
             max: 12
@@ -267,10 +322,14 @@
   }
 
   function plotarGraficoRankingSkins(dados) {
-    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-    let xlabels = dados.map(function (d) { return d.nome; });
-    let yvalores = dados.map(function (d) { return d.votos; });
+    let xlabels = [];
+    let yvalores = [];
+    for (let i = 0; i < dados.length; i++) {
+      xlabels.push(dados[i].nome);
+      yvalores.push(dados[i].votos);
+    }
 
+        Chart.register(ChartDataLabels);
     const ctx3 = document.getElementById('rankingSkins');
 
     new Chart(ctx3, {
@@ -286,12 +345,37 @@
         }]
       },
       options: {
+                    layout: {
+        padding: {
+            top: 30,
+        }
+    },
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+                    legend: {
+        position: 'bottom'
+    },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: 'rgb(190, 180, 136)',
+            font: { weight: 'bold' },
+          }
+        },
         scales: {
+              x: {
+        ticks: {
+            maxRotation: 0,
+            minRotation: 0
+        }
+    },
           y: {
             beginAtZero: true,
-            grace: 0
+            grace: 0,
+            ticks: {
+              stepSize: 1
+            }
           }
         }
       }
@@ -321,10 +405,14 @@
   }
 
   function plotarGraficoRankingHabilidades(dados) {
-    // variavel que puxa os dados que foram convertidos em json e extrai uma propriedade em um novo array individual por questão, retornando  o que esta nas chaves
-    let xlabels = dados.map(function (d) { return d.nome; });
-    let yvalores = dados.map(function (d) { return d.votos; });
+    let xlabels = [];
+    let yvalores = [];
+    for (let i = 0; i < dados.length; i++) {
+      xlabels.push(dados[i].nome);
+      yvalores.push(dados[i].votos);
+    }
 
+        Chart.register(ChartDataLabels);
     const ctx4 = document.getElementById('rankingHabilidades');
 
     new Chart(ctx4, {
@@ -340,12 +428,38 @@
         }]
       },
       options: {
+            layout: {
+        padding: {
+            top: 30,
+        }
+    },
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          legend: {
+        position: 'bottom'
+    },
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: 'rgb(190, 180, 136)',
+            font: { weight: 'bold' },
+        
+          }
+        },
         scales: {
+              x: {
+        ticks: {
+            maxRotation: 0,
+            minRotation: 0
+        }
+    },
           y: {
             beginAtZero: true,
-            max: 100
+            grace: 0,
+            ticks: {
+              stepSize: 1
+            }
           }
         }
       }
@@ -357,14 +471,14 @@
 
 
   function obterQuizzesFeitos() {
-// Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
+    // Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
     fetch("/dashboard/total-quizzes", { cache: 'no-store' }).then(function (resposta) {
       // cache: no-store = não guarda cache, sempre busca dados frescos do banco 
 
 
       // Se a resposta for ok(200~299), ele segue: pega a resposta que ao ser passada pelo HTTP foi transformada em uma string, ele converte novametne pra json, então  começa a função dados. Na função dados, ele mostra no console o que foi recebido no json que ele converteu do banco e atribui ele ao elemento de id kpi-quizzesFeitos com o innerHTML com a configuração de dados[indice 0].tentativas_gerais (que é a propriedade que ele ta puxando de dentro do json)
 
-// Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
+      // Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
       if (resposta.ok) {
 
         resposta.json().then(function (dados) {
@@ -385,14 +499,14 @@
 
 
   function obterTaxaMediaAcertos() {
-// Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
+    // Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
     fetch("/dashboard/taxa-media/", { cache: 'no-store' }).then(function (resposta) {
       // cache: no-store = não guarda cache, sempre busca dados frescos do banco 
 
 
       // Se a resposta for ok(200~299), ele segue: pega a resposta que ao ser passada pelo HTTP foi transformada em uma string, ele converte novametne pra json, então  começa a função dados. Na função dados, ele mostra no console o que foi recebido no json que ele converteu do banco e atribui ele ao elemento de id kpi-quizzesFeitos com o innerHTML com a configuração de dados[indice 0].tentativas_gerais (que é a propriedade que ele ta puxando de dentro do json)
 
-// Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
+      // Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
       if (resposta.ok) {
 
         resposta.json().then(function (dados) {
@@ -400,25 +514,25 @@
           document.getElementById("kpi-taxaMediaAcertos").innerHTML = dados[0].porcentagemAcertos;
           document.getElementById("kpi-mediaAcertos").innerHTML = dados[0].mediaAcertos;
 
-          if (dados[0].mediaAcertos <= 2.5) {
-      document.getElementById("kpi-tituloAcertos").innerHTML = "🤡 Vítima da Pegadinha"
-    
-    } else if (dados[0].mediaAcertos <= 4) {
-      document.getElementById("kpi-tituloAcertos").innerHTML  = "🎭 Clone"
-    
-    } else if (dados[0].mediaAcertos <= 6) {
-      document.getElementById("kpi-tituloAcertos").innerHTML  = "🎪 Aprendiz do Caos"
-    
-    } else if (dados[0].mediaAcertos <= 8) {
-      document.getElementById("kpi-tituloAcertos").innerHTML  = "🗡️ Mestre das Ilusões"
-    
-    } else if (dados[0].mediaAcertos <= 9) {
-      document.getElementById("kpi-tituloAcertos").innerHTML  = "🎭 Caçador de clones"
+          if (dados[0].porcentagemAcertos <= 2.5) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🤡 Vítima da Pegadinha"
 
-    } else {
-      document.getElementById("kpi-tituloAcertos").innerHTML  = "👁️ Imune a ilusões"
-    }
-    });
+          } else if (dados[0].porcentagemAcertos <= 4) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🎭 Clone"
+
+          } else if (dados[0].porcentagemAcertos <= 6) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🎪 Aprendiz do Caos"
+
+          } else if (dados[0].porcentagemAcertos <= 8) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🗡️ Mestre das Ilusões"
+
+          } else if (dados[0].porcentagemAcertos <= 9) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🎭 Caçador de clones"
+
+          } else {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "👁️ Imune a ilusões"
+          }
+        });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
       }
@@ -430,15 +544,15 @@
   // chama a função quando a pagina for carregada, "tipo um parametro global"
   obterTaxaMediaAcertos();
 
-    function obterMelhorPontuacao() {
-// Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
+  function obterMelhorPontuacao() {
+    // Na route dashboard/total-quizzes, ele vai ver que essa função tem  o parametro de requisao e resposta no model ele verifica a query que é executada no banco (requisição) , então(then) ele começa a function resposta
     fetch(`/dashboard/melhor-pontuacao/${sessionStorage.getItem("ID_USUARIO")}`, { cache: 'no-store' }).then(function (resposta) {
       // cache: no-store = não guarda cache, sempre busca dados frescos do banco 
 
 
       // Se a resposta for ok(200~299), ele segue: pega a resposta que ao ser passada pelo HTTP foi transformada em uma string, ele converte novametne pra json, então  começa a função dados. Na função dados, ele mostra no console o que foi recebido no json que ele converteu do banco e atribui ele ao elemento de id kpi-quizzesFeitos com o innerHTML com a configuração de dados[indice 0].tentativas_gerais (que é a propriedade que ele ta puxando de dentro do json)
 
-// Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
+      // Caso contrario ele da um erro no console caso ocorra algum erro no processo, o catch captura e exibe
       if (resposta.ok) {
 
         resposta.json().then(function (dados) {
