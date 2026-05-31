@@ -50,17 +50,17 @@
       <!-- Linha 1 — 4 cards -->
       <div class="dash-row-4">
         <div class="card">
-          <div class="titulo">Taxa média de acerto</div>
+          <div class="titulo">Taxa média de acertos dos usuários</div>
           <div class="kpi-kpi"><span id="kpi-taxaMediaAcertos"></span>%</div>
           <div class="kpi-ancoragem"><span id="kpi-mediaAcertos"></span> de 12 questões</div>
         </div>
         <div class="card">
-          <div class="titulo">Quizzes feitos</div>
+          <div class="titulo">Total de Quizzes realizados</div>
           <div id="kpi-quizzesFeitos" class="kpi-kpi"></div>
           <div class="kpi-ancoragem">+<span id="kpi-quizzesSemana"></span> essa semana</div>
         </div>
         <div class="card">
-          <div class="titulo">Melhor pontuação</div>
+          <div class="titulo">Seu melhor desempenho no quiz</div>
           <div class="kpi-kpi"><span id="kpi-maiorPontuacao"></span>/12</div>
           <div class="kpi-ancoragem"> <span id="kpi-maiorPorcentagem"></span>% de acerto</div>
         </div>
@@ -514,24 +514,6 @@
           document.getElementById("kpi-taxaMediaAcertos").innerHTML = dados[0].porcentagemAcertos;
           document.getElementById("kpi-mediaAcertos").innerHTML = dados[0].mediaAcertos;
 
-          if (dados[0].porcentagemAcertos <= 2.5) {
-            document.getElementById("kpi-tituloAcertos").innerHTML = "🤡 Vítima da Pegadinha"
-
-          } else if (dados[0].porcentagemAcertos <= 4) {
-            document.getElementById("kpi-tituloAcertos").innerHTML = "🎭 Clone"
-
-          } else if (dados[0].porcentagemAcertos <= 6) {
-            document.getElementById("kpi-tituloAcertos").innerHTML = "🎪 Aprendiz do Caos"
-
-          } else if (dados[0].porcentagemAcertos <= 8) {
-            document.getElementById("kpi-tituloAcertos").innerHTML = "🗡️ Mestre das Ilusões"
-
-          } else if (dados[0].porcentagemAcertos <= 9) {
-            document.getElementById("kpi-tituloAcertos").innerHTML = "🎭 Caçador de clones"
-
-          } else {
-            document.getElementById("kpi-tituloAcertos").innerHTML = "👁️ Imune a ilusões"
-          }
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -559,7 +541,28 @@
           console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
           document.getElementById("kpi-maiorPontuacao").innerHTML = dados[0].maiorPontuacao;
           document.getElementById("kpi-maiorPorcentagem").innerHTML = dados[0].maiorPorcentagem;
-        });
+
+                  if (Number(dados[0].maiorPorcentagem) <= 25) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🤡 Vítima da Pegadinha"
+
+          } else if (Number(dados[0].maiorPorcentagem) <= 40) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🎭 Clone"
+
+          } else if (Number(dados[0].maiorPorcentagem) <= 60) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🎪 Aprendiz do Caos"
+
+          } else if (Number(dados[0].maiorPorcentagem) <= 80) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🗡️ Mestre das Ilusões"
+
+          } else if (Number(dados[0].maiorPorcentagem) <= 90) {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "🎭 Caçador de clones"
+
+          } else {
+            document.getElementById("kpi-tituloAcertos").innerHTML = "👁️ Imune a ilusões"
+          }
+
+            });
+
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
       }

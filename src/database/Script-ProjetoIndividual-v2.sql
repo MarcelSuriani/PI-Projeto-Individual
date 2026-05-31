@@ -119,3 +119,29 @@ JOIN usuario u ON t.fkUsuario = u.idUsuario
 GROUP BY u.username
 ORDER BY melhorPontuacao DESC
 LIMIT 5;
+
+SELECT s.nome, COUNT(f.fkSkin) AS votos
+FROM favorito f
+JOIN skin s ON f.fkSkin = s.idSkin
+GROUP BY f.fkSkin
+ORDER BY votos DESC
+LIMIT 5;
+
+SELECT h.nome, COUNT(f.fkHabilidade) AS votos
+FROM favorito f
+JOIN habilidade h ON f.fkHabilidade = h.idHabilidade
+GROUP BY f.fkHabilidade
+ORDER BY votos DESC
+LIMIT 5;
+
+
+SELECT COUNT(idTentativa) Tentativas_gerais FROM tentativa;
+
+SELECT ROUND(AVG(totalAcertos),2) AS mediaAcertos,
+ROUND((AVG(totalAcertos) / 12 * 100),2) AS porcentagemAcertos
+FROM tentativa;
+
+SELECT MAX(totalAcertos) AS maiorPontuacao,
+ROUND(MAX(totalAcertos) / 12 * 100) AS maiorPorcentagem
+FROM tentativa
+WHERE fkUsuario = 1;
