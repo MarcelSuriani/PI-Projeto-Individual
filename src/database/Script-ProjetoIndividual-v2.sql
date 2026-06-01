@@ -74,13 +74,13 @@ INSERT INTO skin VALUES
 (DEFAULT,'Shacoringa'),
 (DEFAULT,'Shaco Estrela Negra'),
 (DEFAULT,'Shaco Arcanista'),
-(DEFAULT,'Shaco Pesadelo na Cidade do Crime'),
+(DEFAULT,'Shaco Pesadelo na C.'),
 (DEFAULT,'Shaco Benção do Inverno'),
 (DEFAULT,'Shaco Soul Fighter'),
-(DEFAULT,'Shaco Soul Fighter de Prestígio'),
+(DEFAULT,'Shaco Soul Fighter de Prest.'),
 (DEFAULT,'Shaco Noite Apavorante'),
 (DEFAULT,'Shaco Gatinho-Surpresa'),
-(DEFAULT,'Shaco Pandemônio de Prestígio'),
+(DEFAULT,'Shaco Pandemônio de Prest.'),
 (DEFAULT,'Shaco McDonalds');
 
 INSERT INTO questao (pergunta, respostaCorreta) VALUES
